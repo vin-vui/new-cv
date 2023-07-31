@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Models\Skill;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class SkillController extends Controller
 {
@@ -26,8 +26,7 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        $valid_datas = $request->validate([
+        $validated_data = $request->validate([
             'title' => 'required',
             'img' => 'required|image|mimes:jpeg,jpg,png,gif,svg|max:2048',
             'url' => 'nullable',
@@ -35,27 +34,12 @@ class SkillController extends Controller
             'level' => 'required',
         ]);
 
-        $skill = new Skill;
-
-        if($request->file()) {
-            $file_name = time().'_'.$request->img->getClientOriginalName();
-            $file_path = $request->file('img')->store('image', 'public');
-
-            $skill->title = $request->title;
-            $skill->url = $request->url;
-            $skill->description = $request->description;
-            $skill->level = $request->level;
-            $skill->img = '/storage/'.$file_path;
-            $skill->save();
+        if ($request->hasFile('img')) {
+            $path = Storage::disk('public')->put('image', $request->file('img'));
+            $validated_data['img'] = '/storage/'.$path;
         }
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Skill $skill)
-    {
-        //
+        Skill::updateOrCreate(['id' => $request->id], $validated_data);
     }
 
     /**

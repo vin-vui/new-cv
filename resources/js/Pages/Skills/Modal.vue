@@ -1,5 +1,5 @@
 <template>
-    <TransitionRoot as="template" :show="isModalVisible">
+    <TransitionRoot as="template">
         <Dialog as="div" class="relative z-10" @close="close">
 
             <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100"
@@ -25,6 +25,7 @@
 
                                 <form @submit.prevent="submit" enctype="multipart/form-data"
                                     class="flex flex-col w-full gap-4">
+                                    <input type="hidden" v-model="form.id">
                                     <div class="flex flex-col justify-start">
                                         <InputLabel value="Title" />
                                         <input type="text" v-model="form.title">
@@ -33,8 +34,8 @@
                                     <div class="flex flex-col justify-start">
                                         <InputLabel value="Image" />
                                         <!-- <img :src="form.img" class="object-contain h-32" /> -->
-                                        <input type="file" accept="image/jpeg, image/png, image/svg" @change="previewImage" ref="photo">
-                                        <img v-if="url" :src="url" class="object-contain h-32 mt-4" />
+                                        <input type="file" accept="image/jpeg, image/png, image/svg" ref="photo" @change="previewImage">
+                                        <img v-if="preview" :src="preview" class="object-contain h-32 mt-4" />
                                         <InputError :message="form.errors.img" />
                                     </div>
                                     <div class="flex flex-col justify-start">
@@ -48,11 +49,13 @@
                                         <InputError :message="form.errors.description" />
                                     </div>
                                     <div class="flex flex-col justify-start">
+                                        <InputLabel value="Level" />
                                         <select v-model="form.level">
                                             <option v-for="option in options" :key="option.value" :value="option.value">
                                                 {{ option.text }}
                                             </option>
                                         </select>
+                                        <InputError :message="form.errors.level" />
                                     </div>
 
                                     <div class="flex items-center justify-between gap-8 mt-4">
@@ -77,7 +80,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import InputLabel from '@/Components/InputLabel.vue'
 import InputError from '@/Components/InputError.vue'
@@ -104,13 +107,12 @@ export default {
     data() {
         return {
             form: this.$inertia.form({
-                title: this.skill != null ? this.skill.title : '',
-                img: this.skill != null ? this.skill.img : '',
-                url: this.skill != null ? this.skill.url : '',
-                description: this.skill != null ? this.skill.description : '',
-                level: ref('advanced'),
-                // _method: this.skill ? 'put' : 'post',
-                _method: 'post',
+                id: null,
+                title: '',
+                img: null,
+                url: '',
+                description: '',
+                level: '',
             }),
             options: ref([
                 { text: 'beginner', value: 'beginner' },
@@ -118,30 +120,45 @@ export default {
                 { text: 'advanced', value: 'advanced' },
                 { text: 'expert', value: 'expert' },
             ]),
-            isModalVisible: ref(true),
+            preview: '',
+            method: null,
         };
     },
 
+    watch: {
+        skill: {
+            handler() {
+                this.form.id = this.skill?.id;
+                this.form.title = this.skill?.title;
+                this.form.img = this.skill?.img;
+                this.preview = this.skill?.img;
+                this.form.url = this.skill?.url;
+                this.form.description = this.skill?.description;
+                this.form.level =  ref(this.skill?.level);
+            },
+            deep: true
+        }
+    },
+
     methods: {
-        close() {
-            this.$emit('close');
-        },
         submit() {
             if (this.$refs.photo) {
                 this.form.img = this.$refs.photo.files[0];
             }
             this.form.post(route('skills.store'), {
-                preserveState: (page) => Object.keys(page.props.errors).length
-            });
+                preserveState: (page) => Object.keys(page.props.errors).length,
+                onSuccess: () => this.close(),
+            })
         },
         previewImage(e) {
-            // this.form.img = URL.createObjectURL(e.target.files[0]);
             const file = e.target.files[0];
-            this.url = URL.createObjectURL(file);
+            this.preview = URL.createObjectURL(file);
         },
-        reset() {
-            this.form.reset();
-        }
+        close() {
+            this.form.reset()
+            this.form.clearErrors()
+            this.$emit('close')
+        },
     },
 };
 </script>

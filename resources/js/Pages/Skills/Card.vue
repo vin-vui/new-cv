@@ -1,7 +1,9 @@
 <template>
     <div class="bg-white rounded-lg hover:shadow-xl cursor-pointer transition-all duration-200">
         <div class="flex">
-            <img :src="skill.img" :alt="skill.title" class="flex-none rounded-l-lg object-contain w-32 h-32 p-2" />
+            <div class="flex-none rounded-l-lg">
+                <img :src="skill.img" :alt="skill.title" class="object-contain w-32 h-32 my-auto p-2" />
+            </div>
             <div class="w-full p-4 flex flex-col justify-between">
                 <div class="">
                     <h3 class="text-xl">{{ skill.title }}</h3>
