@@ -182,8 +182,8 @@ export default {
             this.preview = URL.createObjectURL(file);
         },
         close() {
-            this.form.reset()
-            this.form.clearErrors()
+            // this.form.reset()
+            // this.form.clearErrors()
             this.$emit('close')
         },
     },

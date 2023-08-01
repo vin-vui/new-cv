@@ -26,7 +26,6 @@ return new class extends Migration
             $table->string('illustration_2')->nullable();
             $table->string('illustration_3')->nullable();
             $table->string('illustration_4')->nullable();
-            $table->tinyInteger('status')->default(0);
             $table->boolean('is_printable')->default(true);
             $table->timestamps();
         });

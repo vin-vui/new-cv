@@ -150,8 +150,8 @@ export default {
             })
         },
         close() {
-            this.form.reset()
-            this.form.clearErrors()
+            // this.form.reset()
+            // this.form.clearErrors()
             this.$emit('close')
         },
     },
