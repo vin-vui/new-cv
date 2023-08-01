@@ -4,7 +4,7 @@
 
             <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100"
                 leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
-                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+                <div class="fixed inset-0 backdrop-blur-md bg-white/20 transition-opacity" />
             </TransitionChild>
 
             <div class="fixed inset-0 z-10 overflow-y-auto">
@@ -15,14 +15,16 @@
                         leave-from="opacity-100 translate-y-0 sm:scale-100"
                         leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
                         <DialogPanel
-                            class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
-                            <div class="mt-3  sm:mt-5 flex flex-col gap-4">
+                            class="relative transform overflow-hidden bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
 
-                                <DialogTitle as="h3" class="text-base text-center font-semibold leading-6 text-gray-900">
-                                    <span v-if="skill != null">Update Skill</span>
-                                    <span v-else>Create Skill</span>
-                                </DialogTitle>
+                            <DialogTitle as="h3"
+                                class=" text-base text-center font-semibold leading-6 text-gray-50 py-2 rounded-lg"
+                                :class="{ 'bg-yellow-600': skill != null, 'bg-green-600': skill == null }">
+                                <span v-if="skill != null">Update Skill</span>
+                                <span v-else>Add Skill</span>
+                            </DialogTitle>
 
+                            <div class="mt-3 sm:mt-5 flex flex-col gap-4">
                                 <form @submit.prevent="submit" enctype="multipart/form-data"
                                     class="flex flex-col w-full gap-4">
                                     <input type="hidden" v-model="form.id">
@@ -33,8 +35,8 @@
                                     </div>
                                     <div class="flex flex-col justify-start">
                                         <InputLabel value="Image" />
-                                        <!-- <img :src="form.img" class="object-contain h-32" /> -->
-                                        <input type="file" accept="image/jpeg, image/png, image/svg" ref="photo" @change="previewImage">
+                                        <input type="file" accept="image/jpeg, image/png, image/svg" ref="photo"
+                                            @change="previewImage">
                                         <img v-if="preview" :src="preview" class="object-contain h-32 mt-4" />
                                         <InputError :message="form.errors.img" />
                                     </div>
@@ -62,14 +64,21 @@
                                         <button type="button"
                                             class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                             @click="close">
+                                            <ArrowLeftIcon class="mr-1 h-5 w-5" aria-hidden="true" />
                                             Go back
                                         </button>
                                         <button :loading="form.processing" :disabled="form.processing"
-                                            class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                                            Submit!
+                                            class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
+                                            <CheckIcon class="mr-1 h-5 w-5" aria-hidden="true" />
+                                            Submit
                                         </button>
                                     </div>
                                 </form>
+                            </div>
+                            <div v-if="skill != null" class="flex justify-end mt-4">
+                                <VueConfirmationButton class="text-red-600 hover:text-red-800 transition-all duration-200"
+                                    :messages="customMessages" v-on:confirmation-success="deleteSkill">
+                                </VueConfirmationButton>
                             </div>
                         </DialogPanel>
                     </TransitionChild>
@@ -84,6 +93,8 @@ import { ref } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import InputLabel from '@/Components/InputLabel.vue'
 import InputError from '@/Components/InputError.vue'
+import VueConfirmationButton from '@/Components/VueConfirmationButton.vue';
+import { CheckIcon, ArrowLeftIcon } from '@heroicons/vue/20/solid';
 
 export default {
     name: 'SkillModal',
@@ -96,6 +107,8 @@ export default {
         TransitionRoot,
         InputLabel,
         InputError,
+        VueConfirmationButton,
+        CheckIcon, ArrowLeftIcon
     },
 
     props: {
@@ -121,7 +134,11 @@ export default {
                 { text: 'expert', value: 'expert' },
             ]),
             preview: '',
-            method: null,
+            customMessages: [
+                'Delete Skill',
+                'Are you sure?',
+                'Done!'
+            ],
         };
     },
 
@@ -134,7 +151,7 @@ export default {
                 this.preview = this.skill?.img;
                 this.form.url = this.skill?.url;
                 this.form.description = this.skill?.description;
-                this.form.level =  ref(this.skill?.level);
+                this.form.level = ref(this.skill?.level);
             },
             deep: true
         }
@@ -143,9 +160,19 @@ export default {
     methods: {
         submit() {
             if (this.$refs.photo) {
-                this.form.img = this.$refs.photo.files[0];
+                if (this.$refs.photo.files[0] !== undefined) {
+                    this.form.img = this.$refs.photo.files[0];
+                } else {
+                    this.form.img = this.skill.img;
+                }
             }
             this.form.post(route('skills.store'), {
+                preserveState: (page) => Object.keys(page.props.errors).length,
+                onSuccess: () => this.close(),
+            })
+        },
+        deleteSkill() {
+            this.form.delete(route('skills.destroy', this.skill), {
                 preserveState: (page) => Object.keys(page.props.errors).length,
                 onSuccess: () => this.close(),
             })
