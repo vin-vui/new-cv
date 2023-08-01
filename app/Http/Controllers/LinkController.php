@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Link;
+use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class LinkController extends Controller
 {
@@ -12,15 +15,9 @@ class LinkController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $links = Link::orderBy('title')->get();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return Inertia::render('Links/Index', compact('links'));
     }
 
     /**
@@ -28,31 +25,13 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validated_data = Validator::make($request->all(), [
+            'title' => 'required',
+            'url' => 'required',
+            'img' => 'required',
+        ])->validate();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Link $link)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Link $link)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Link $link)
-    {
-        //
+        Link::updateOrCreate(['id' => $request->id], $validated_data);
     }
 
     /**
@@ -60,6 +39,6 @@ class LinkController extends Controller
      */
     public function destroy(Link $link)
     {
-        //
+        $link->delete();
     }
 }

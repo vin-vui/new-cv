@@ -12,7 +12,7 @@ class Formation extends Model
     protected $fillable = [
         'title',
         'school',
-        'date',
+        'year',
         'description',
     ];
 }

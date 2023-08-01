@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Formation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FormationController extends Controller
 {
@@ -12,15 +14,9 @@ class FormationController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $formations = Formation::latest('year')->get();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return Inertia::render('Formations/Index', compact('formations'));
     }
 
     /**
@@ -28,31 +24,14 @@ class FormationController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validated_data = Validator::make($request->all(), [
+            'title' => 'required',
+            'school' => 'required',
+            'year' => 'required',
+            'description' => 'required',
+        ])->validate();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Formation $formation)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Formation $formation)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Formation $formation)
-    {
-        //
+        Formation::updateOrCreate(['id' => $request->id], $validated_data);
     }
 
     /**
@@ -60,6 +39,6 @@ class FormationController extends Controller
      */
     public function destroy(Formation $formation)
     {
-        //
+        $formation->delete();
     }
 }

@@ -19,9 +19,9 @@
 
                             <DialogTitle as="h3"
                                 class=" text-base text-center font-semibold leading-6 text-gray-50 py-2 rounded-lg"
-                                :class="{ 'bg-yellow-600': skill != null, 'bg-green-600': skill == null }">
-                                <span v-if="skill != null">Update Skill</span>
-                                <span v-else>Add Skill</span>
+                                :class="{ 'bg-yellow-600': link != null, 'bg-green-600': link == null }">
+                                <span v-if="link != null">Update Link</span>
+                                <span v-else>Add Link</span>
                             </DialogTitle>
 
                             <div class="mt-3 sm:mt-5 flex flex-col gap-4">
@@ -34,30 +34,14 @@
                                         <InputError :message="form.errors.title" />
                                     </div>
                                     <div class="flex flex-col justify-start">
-                                        <InputLabel value="Image" />
-                                        <input type="file" accept="image/jpeg, image/png, image/svg" ref="photo"
-                                            @change="previewImage">
-                                        <img v-if="preview" :src="preview" class="object-contain h-32 mt-4" />
-                                        <InputError :message="form.errors.img" />
-                                    </div>
-                                    <div class="flex flex-col justify-start">
                                         <InputLabel value="Url Externe" />
                                         <input type="text" v-model="form.url">
                                         <InputError :message="form.errors.url" />
                                     </div>
                                     <div class="flex flex-col justify-start">
-                                        <InputLabel value="Description" />
-                                        <textarea class="" v-model="form.description"></textarea>
-                                        <InputError :message="form.errors.description" />
-                                    </div>
-                                    <div class="flex flex-col justify-start">
-                                        <InputLabel value="Level" />
-                                        <select v-model="form.level">
-                                            <option v-for="option in options" :key="option.value" :value="option.value">
-                                                {{ option.text }}
-                                            </option>
-                                        </select>
-                                        <InputError :message="form.errors.level" />
+                                        <InputLabel value="SVG Icon" />
+                                        <input type="text" v-model="form.img">
+                                        <InputError :message="form.errors.img" />
                                     </div>
 
                                     <div class="flex items-center justify-between gap-4 mt-4">
@@ -75,9 +59,9 @@
                                     </div>
                                 </form>
                             </div>
-                            <div v-if="skill != null" class="flex justify-end mt-4">
+                            <div v-if="link != null" class="flex justify-end mt-4">
                                 <VueConfirmationButton class="text-red-600 hover:text-red-800 transition-all duration-200"
-                                    :messages="customMessages" v-on:confirmation-success="deleteSkill">
+                                    :messages="customMessages" v-on:confirmation-success="deleteLink">
                                 </VueConfirmationButton>
                             </div>
                         </DialogPanel>
@@ -97,7 +81,7 @@ import VueConfirmationButton from '@/Components/VueConfirmationButton.vue';
 import { CheckIcon, ArrowLeftIcon } from '@heroicons/vue/20/solid';
 
 export default {
-    name: 'SkillModal',
+    name: 'LinkModal',
 
     components: {
         Dialog,
@@ -112,7 +96,7 @@ export default {
     },
 
     props: {
-        skill: {
+        link: {
             type: Object,
         },
     },
@@ -122,20 +106,12 @@ export default {
             form: this.$inertia.form({
                 id: null,
                 title: '',
-                img: null,
+                img: '',
                 url: '',
-                description: '',
-                level: '',
             }),
-            options: ref([
-                { text: 'beginner', value: 'beginner' },
-                { text: 'intermediate', value: 'intermediate' },
-                { text: 'advanced', value: 'advanced' },
-                { text: 'expert', value: 'expert' },
-            ]),
             preview: '',
             customMessages: [
-                'Delete Skill',
+                'Delete Link',
                 'Are you sure?',
                 'Done!'
             ],
@@ -143,15 +119,12 @@ export default {
     },
 
     watch: {
-        skill: {
+        link: {
             handler() {
-                this.form.id = this.skill?.id;
-                this.form.title = this.skill?.title;
-                this.form.img = this.skill?.img;
-                this.preview = this.skill?.img;
-                this.form.url = this.skill?.url;
-                this.form.description = this.skill?.description;
-                this.form.level = ref(this.skill?.level);
+                this.form.id = this.link?.id;
+                this.form.title = this.link?.title;
+                this.form.img = this.link?.img;
+                this.form.url = this.link?.url;
             },
             deep: true
         }
@@ -159,27 +132,16 @@ export default {
 
     methods: {
         submit() {
-            if (this.$refs.photo) {
-                if (this.$refs.photo.files[0] !== undefined) {
-                    this.form.img = this.$refs.photo.files[0];
-                } else {
-                    this.form.img = this.skill.img;
-                }
-            }
-            this.form.post(route('skills.store'), {
+            this.form.post(route('links.store'), {
                 preserveState: (page) => Object.keys(page.props.errors).length,
                 onSuccess: () => this.close(),
             })
         },
-        deleteSkill() {
-            this.form.delete(route('skills.destroy', this.skill), {
+        deleteLink() {
+            this.form.delete(route('links.destroy', this.link), {
                 preserveState: (page) => Object.keys(page.props.errors).length,
                 onSuccess: () => this.close(),
             })
-        },
-        previewImage(e) {
-            const file = e.target.files[0];
-            this.preview = URL.createObjectURL(file);
         },
         close() {
             this.form.reset()
