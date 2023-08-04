@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="flex flex-col justify-start">
                                         <InputLabel value="Date" />
-                                        <input v-model="form.year" type="number" min="1900" max="3099" step="1">
+                                        <input v-model="form.year" type="text">
                                         <InputError :message="form.errors.year" />
                                     </div>
                                     <div class="flex flex-col justify-start">
@@ -150,8 +150,7 @@ export default {
             })
         },
         close() {
-            // this.form.reset()
-            // this.form.clearErrors()
+            this.form.clearErrors()
             this.$emit('close')
         },
     },

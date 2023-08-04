@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,9 +13,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Skill::factory(10)->create();
+        $skills_file_path = resource_path('sql/skills.sql');
+        DB::unprepared(
+            file_get_contents($skills_file_path)
+        );
 
-        \App\Models\User::factory()->create([
+        $formations_file_path = resource_path('sql/formations.sql');
+        DB::unprepared(
+            file_get_contents($formations_file_path)
+        );
+
+        $links_file_path = resource_path('sql/links.sql');
+        DB::unprepared(
+            file_get_contents($links_file_path)
+        );
+
+        User::factory()->create([
             'name' => 'Vincent',
             'email' => 'vincent@vinvui.com',
             'password' => bcrypt('password'),

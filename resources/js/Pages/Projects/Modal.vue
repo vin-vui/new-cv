@@ -30,7 +30,7 @@
 
                                     <div class="flex gap-8">
                                         <!-- form -->
-                                        <div class="flex flex-col gap-2">
+                                        <div class="flex flex-col gap-2 basis-2/5">
                                             <input type="hidden" v-model="form.id">
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Title" />
@@ -321,8 +321,7 @@ export default {
             this.pwImage4 = URL.createObjectURL(e.target.files[0]);
         },
         close() {
-            // this.form.reset()
-            // this.form.clearErrors()
+            this.form.clearErrors()
             this.$emit('close')
         },
     },

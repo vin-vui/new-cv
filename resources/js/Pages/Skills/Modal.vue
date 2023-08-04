@@ -93,8 +93,8 @@ import { ref } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import InputLabel from '@/Components/InputLabel.vue'
 import InputError from '@/Components/InputError.vue'
-import VueConfirmationButton from '@/Components/VueConfirmationButton.vue';
-import { CheckIcon, ArrowLeftIcon } from '@heroicons/vue/20/solid';
+import VueConfirmationButton from '@/Components/VueConfirmationButton.vue'
+import { CheckIcon, ArrowLeftIcon } from '@heroicons/vue/20/solid'
 
 export default {
     name: 'SkillModal',
@@ -182,8 +182,7 @@ export default {
             this.preview = URL.createObjectURL(file);
         },
         close() {
-            // this.form.reset()
-            // this.form.clearErrors()
+            this.form.clearErrors()
             this.$emit('close')
         },
     },

@@ -15,7 +15,7 @@
         </template>
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8">
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 gap-4">
                 <FormationCard v-for="formation in formations" :key="formation.id" :formation="formation" @click="showModal(formation)" />
             </div>
         </div>

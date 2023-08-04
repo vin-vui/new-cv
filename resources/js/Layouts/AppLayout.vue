@@ -67,7 +67,6 @@ const logout = () => {
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
-
                             <!-- Settings Dropdown -->
                             <div class="ml-3 relative">
                                 <Dropdown align="right" width="48">
@@ -241,14 +240,14 @@ const logout = () => {
             </nav>
 
             <!-- Page Heading -->
-            <header v-if="$slots.header" class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <header v-if="$slots.header" class="bg-white shadow sticky top-0">
+                <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>
             </header>
 
             <!-- Page Content -->
-            <main>
+            <main class="pb-12">
                 <slot />
             </main>
         </div>

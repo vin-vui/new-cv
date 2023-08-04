@@ -5,16 +5,25 @@
                 <img :src="project.logo" :alt="project.title" class="object-contain w-32 h-32 my-auto p-2" />
             </div>
             <div class="w-full p-4 flex flex-col justify-between">
-                <div class="">
-                    <h3 class="text-xl">{{ project.title }}</h3>
+                <div class="flex justify-between">
+                    <div class="">
+                        <h3 class="text-xl">{{ project.title }}</h3>
+                        <div class="flex flex-col">
+                            <div class="">
+                                <span class="text-sm text-gray-300 w-18 mr-2">Client</span> {{ project.client }}
+                            </div>
+                            <div class="">
+                                <span class="text-sm text-gray-300 w-18 mr-2">Rôle</span> {{ project.job }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="bg-gray-100 border border-gray-200 text-gray-600 px-2 py-1 rounded-md">
+                        {{ moment(project.start_date) }} - {{ moment(project.end_date) }}
+                    </div>
+                    </div>
                 </div>
-                <div class="">
-                    Pour {{ project.client }}
-                </div>
-                <div class="">
-                    Rôle {{ project.job }}
-                </div>
-                <div class="flex gap-8">
+                <div class="flex gap-8 mt-4">
                     <a v-if="project.url" :href="project.url" target="_blank"
                         class="underline text-green-400 text-sm flex items-center">
                         <ArrowTopRightOnSquareIcon class="inline-block h-4 w-4 mr-1" aria-hidden="true" />
@@ -30,18 +39,16 @@
                         {{ project.github }}
                     </a>
                 </div>
-                <div class="text-gray-400">
+                <div class="text-gray-400 whitespace-pre-wrap mt-4 mb-6">
                     {{ project.description }}
                 </div>
-                <div class="">
-                    <div class="">
-                        {{ moment(project.start_date) }} - {{ moment(project.end_date) }}
+                <div class="flex flex-wrap items-center gap-2">
+                    <div class="text-sm text-gray-300">Technologies utilisées</div>
+                    <div v-for="skill in project.skills"
+                        class="bg-gray-100 border-gray-400 text-gray-800 px-2 py-0.5 rounded-md text-xs flex items-center gap-1">
+                        <img :src="skill.img" :alt="skill.title" class="h-3">
+                        <div class="">{{ skill.title }}</div>
                     </div>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="text-sm text-gray-400">Technologies utilisées</span>
-                    <span v-for="skill in project.skills"
-                        class="bg-green-100 border-green-400 text-green-800 px-2 py-0.5 rounded-md text-xs">{{ skill.title }}</span>
                 </div>
             </div>
         </div>
@@ -63,7 +70,7 @@ export default {
     },
     methods: {
         moment(date) {
-            return moment(date).format('DD/MM/Y');
+            return moment(date).format('MMMM Y');
         }
     }
 }
