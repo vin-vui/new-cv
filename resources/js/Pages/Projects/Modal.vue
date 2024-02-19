@@ -40,7 +40,7 @@
 
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Url Externe" />
-                                                <input type="text" v-model="form.url">
+                                                <input type="url" v-model="form.url">
                                                 <InputError :message="form.errors.url" />
                                             </div>
                                             <div class="flex flex-col justify-start">
@@ -60,7 +60,7 @@
                                             </div>
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Github" />
-                                                <input type="text" v-model="form.github">
+                                                <input type="url" v-model="form.github">
                                                 <InputError :message="form.errors.github" />
                                             </div>
                                             <div class="flex flex-col justify-start">
@@ -95,14 +95,14 @@
                                         <div class="grid grid-cols-2 gap-4">
                                             <div class="flex flex-col justify-start col-span-2">
                                                 <InputLabel value="Logo" />
-                                                <input type="file" accept="image/jpeg, image/png, image/svg" ref="photo"
+                                                <input type="file" accept="image/*" ref="photo"
                                                     @change="previewLogo">
                                                 <img v-if="pwLogo" :src="pwLogo" class="object-contain h-32 mt-4 border" />
                                                 <InputError :message="form.errors.logo" />
                                             </div>
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Image 1" />
-                                                <input type="file" accept="image/jpeg, image/png, image/svg" ref="image1"
+                                                <input type="file" accept="image/*" ref="image1"
                                                     @change="previewImage1">
                                                 <img v-if="pwImage1" :src="pwImage1"
                                                     class="object-contain h-32 mt-4 border" />
@@ -110,7 +110,7 @@
                                             </div>
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Image 2" />
-                                                <input type="file" accept="image/jpeg, image/png, image/svg" ref="image2"
+                                                <input type="file" accept="image/*" ref="image2"
                                                     @change="previewImage2">
                                                 <img v-if="pwImage2" :src="pwImage2"
                                                     class="object-contain h-32 mt-4 border" />
@@ -118,7 +118,7 @@
                                             </div>
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Image 3" />
-                                                <input type="file" accept="image/jpeg, image/png, image/svg" ref="image3"
+                                                <input type="file" accept="image/*" ref="image3"
                                                     @change="previewImage3">
                                                 <img v-if="pwImage3" :src="pwImage3"
                                                     class="object-contain h-32 mt-4 border" />
@@ -126,7 +126,7 @@
                                             </div>
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Image 4" />
-                                                <input type="file" accept="image/jpeg, image/png, image/svg" ref="image4"
+                                                <input type="file" accept="image/*" ref="image4"
                                                     @change="previewImage4">
                                                 <img v-if="pwImage4" :src="pwImage4"
                                                     class="object-contain h-32 mt-4 border" />
@@ -263,35 +263,35 @@ export default {
                 if (this.$refs.photo.files[0] !== undefined) {
                     this.form.logo = this.$refs.photo.files[0];
                 } else {
-                    this.form.logo = this.project.logo;
+                    this.form.logo = this.project?.logo;
                 }
             }
             if (this.$refs.image1) {
                 if (this.$refs.image1.files[0] !== undefined) {
                     this.form.illustration_1 = this.$refs.image1.files[0];
                 } else {
-                    this.form.illustration_1 = this.project.illustration_1;
+                    this.form.illustration_1 = this.project?.illustration_1;
                 }
             }
             if (this.$refs.image2) {
                 if (this.$refs.image2.files[0] !== undefined) {
                     this.form.illustration_2 = this.$refs.image2.files[0];
                 } else {
-                    this.form.illustration_2 = this.project.illustration_2;
+                    this.form.illustration_2 = this.project?.illustration_2;
                 }
             }
             if (this.$refs.image3) {
                 if (this.$refs.image3.files[0] !== undefined) {
                     this.form.illustration_3 = this.$refs.image3.files[0];
                 } else {
-                    this.form.illustration_3 = this.project.illustration_3;
+                    this.form.illustration_3 = this.project?.illustration_3;
                 }
             }
             if (this.$refs.image4) {
                 if (this.$refs.image4.files[0] !== undefined) {
                     this.form.illustration_4 = this.$refs.image4.files[0];
                 } else {
-                    this.form.illustration_4 = this.project.illustration_4;
+                    this.form.illustration_4 = this.project?.illustration_4;
                 }
             }
             this.form.post(route('projects.store'), {

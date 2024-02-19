@@ -43,12 +43,18 @@
                     {{ project.description }}
                 </div>
                 <div class="flex flex-wrap items-center gap-2">
-                    <div class="text-sm text-gray-300">Technologies utilisées</div>
+                    <div class="text-sm text-gray-300">Compétences</div>
                     <div v-for="skill in project.skills"
                         class="bg-gray-100 border-gray-400 text-gray-800 px-2 py-0.5 rounded-md text-xs flex items-center gap-1">
                         <img :src="skill.img" :alt="skill.title" class="h-3">
                         <div class="">{{ skill.title }}</div>
                     </div>
+                </div>
+                <div class="flex justify-between gap-4 max-w-full flex-wrap">
+                    <img v-if="project.illustration_1" :src="project.illustration_1" :alt="project.title" class="h-48 object-cover rounded-md mt-4" />
+                    <img v-if="project.illustration_2" :src="project.illustration_2" :alt="project.title" class="h-48 object-cover rounded-md mt-4" />
+                    <img v-if="project.illustration_3" :src="project.illustration_3" :alt="project.title" class="h-48 object-cover rounded-md mt-4" />
+                    <img v-if="project.illustration_4" :src="project.illustration_4" :alt="project.title" class="h-48 object-cover rounded-md mt-4" />
                 </div>
             </div>
         </div>
