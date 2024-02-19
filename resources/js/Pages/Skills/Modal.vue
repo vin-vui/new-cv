@@ -35,8 +35,7 @@
                                     </div>
                                     <div class="flex flex-col justify-start">
                                         <InputLabel value="Image" />
-                                        <input type="file" accept="image/jpeg, image/png, image/svg" ref="photo"
-                                            @change="previewImage">
+                                        <input type="file" accept="image/*" ref="photo" @change="previewImage">
                                         <img v-if="preview" :src="preview" class="object-contain h-32 mt-4" />
                                         <InputError :message="form.errors.img" />
                                     </div>
