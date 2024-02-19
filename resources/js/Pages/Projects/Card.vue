@@ -50,11 +50,11 @@
                         <div class="">{{ skill.title }}</div>
                     </div>
                 </div>
-                <div class="flex justify-between gap-4 max-w-full flex-wrap">
-                    <img v-if="project.illustration_1" :src="project.illustration_1" :alt="project.title" class="h-48 object-cover rounded-md mt-4" />
-                    <img v-if="project.illustration_2" :src="project.illustration_2" :alt="project.title" class="h-48 object-cover rounded-md mt-4" />
-                    <img v-if="project.illustration_3" :src="project.illustration_3" :alt="project.title" class="h-48 object-cover rounded-md mt-4" />
-                    <img v-if="project.illustration_4" :src="project.illustration_4" :alt="project.title" class="h-48 object-cover rounded-md mt-4" />
+                <div class="mt-4 gap-4 md:columns-2 columns-1 [&>img:not(:first-child)]:mt-4">
+                    <img v-if="project.illustration_1" :src="project.illustration_1" :alt="project.title" class="rounded-md" />
+                    <img v-if="project.illustration_2" :src="project.illustration_2" :alt="project.title" class="rounded-md" />
+                    <img v-if="project.illustration_3" :src="project.illustration_3" :alt="project.title" class="rounded-md" />
+                    <img v-if="project.illustration_4" :src="project.illustration_4" :alt="project.title" class="rounded-md" />
                 </div>
             </div>
         </div>
