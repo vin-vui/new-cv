@@ -19,8 +19,8 @@
                     </div>
                     <div class="">
                         <div class="bg-gray-100 border border-gray-200 text-gray-600 px-2 py-1 rounded-md">
-                        {{ moment(project.start_date) }} - {{ moment(project.end_date) }}
-                    </div>
+                            {{ moment(project.start_date) }} - {{ moment(project.end_date) }}
+                        </div>
                     </div>
                 </div>
                 <div class="flex gap-8 mt-4">
@@ -45,16 +45,22 @@
                 <div class="flex flex-wrap items-center gap-2">
                     <div class="text-sm text-gray-300">Compétences</div>
                     <div v-for="skill in project.skills"
-                        class="bg-gray-100 border-gray-400 text-gray-800 px-2 py-0.5 rounded-md text-xs flex items-center gap-1">
-                        <img :src="skill.img" :alt="skill.title" class="h-3">
-                        <div class="">{{ skill.title }}</div>
+                        class="bg-gray-100 border-gray-400 text-gray-800 px-2 py-0.5 rounded-md text-xs">
+                        <tippy :content="skill.level" class="flex items-center gap-1">
+                            <img :src="skill.img" :alt="skill.title" class="h-3">
+                            <div class="">{{ skill.title }}</div>
+                        </tippy>
                     </div>
                 </div>
                 <div class="mt-4 gap-4 md:columns-2 columns-1 [&>img:not(:first-child)]:mt-4">
-                    <img v-if="project.illustration_1" :src="project.illustration_1" :alt="project.title" class="rounded-md" />
-                    <img v-if="project.illustration_2" :src="project.illustration_2" :alt="project.title" class="rounded-md" />
-                    <img v-if="project.illustration_3" :src="project.illustration_3" :alt="project.title" class="rounded-md" />
-                    <img v-if="project.illustration_4" :src="project.illustration_4" :alt="project.title" class="rounded-md" />
+                    <img v-if="project.illustration_1" :src="project.illustration_1" :alt="project.title"
+                        class="rounded-md" />
+                    <img v-if="project.illustration_2" :src="project.illustration_2" :alt="project.title"
+                        class="rounded-md" />
+                    <img v-if="project.illustration_3" :src="project.illustration_3" :alt="project.title"
+                        class="rounded-md" />
+                    <img v-if="project.illustration_4" :src="project.illustration_4" :alt="project.title"
+                        class="rounded-md" />
                 </div>
             </div>
         </div>
