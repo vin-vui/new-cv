@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <perfect-scrollbar>
 
         <Head :title="title" />
 
@@ -127,7 +127,7 @@
                 <slot />
             </div>
         </main>
-    </div>
+    </perfect-scrollbar>
 
 
     <!-- <button v-if="$page.props.jetstream.managesProfilePhotos"

@@ -22,6 +22,7 @@
         "@headlessui/vue": "^1.7.14",
         "@heroicons/vue": "^2.0.18",
         "moment": "^2.29.4",
-        "vue-tippy": "^6.4.1"
+        "vue-tippy": "^6.4.1",
+        "vue3-perfect-scrollbar": "^1.6.1"
     }
 }
