@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white rounded-lg hover:shadow-xl cursor-pointer transition-all duration-200">
+    <div class="bg-white shadow rounded-lg hover:shadow-xl hover:scale-105 cursor-pointer transition-all duration-200">
         <div class="flex">
             <div class="w-full p-4 flex flex-col">
                 <div class="flex justify-between">

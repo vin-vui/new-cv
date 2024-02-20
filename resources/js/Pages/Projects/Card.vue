@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white rounded-lg hover:shadow-xl cursor-pointer transition-all duration-200">
+    <div class="bg-white shadow rounded-lg hover:shadow-xl hover:scale-105 cursor-pointer transition-all duration-200">
         <div class="flex">
             <div class="flex-none rounded-l-lg">
                 <img :src="project.logo" :alt="project.title" class="object-contain w-32 h-32 my-auto p-2" />
@@ -52,7 +52,7 @@
                         </tippy>
                     </div>
                 </div>
-                <div class="mt-4 gap-4 md:columns-2 columns-1 [&>img:not(:first-child)]:mt-4">
+                <!-- <div class="mt-4 gap-4 md:columns-2 columns-1 [&>img:not(:first-child)]:mt-4">
                     <img v-if="project.illustration_1" :src="project.illustration_1" :alt="project.title"
                         class="rounded-md" />
                     <img v-if="project.illustration_2" :src="project.illustration_2" :alt="project.title"
@@ -61,6 +61,16 @@
                         class="rounded-md" />
                     <img v-if="project.illustration_4" :src="project.illustration_4" :alt="project.title"
                         class="rounded-md" />
+                </div> -->
+                <div class="mt-4 gap-4 flex overflow-x-hidden">
+                    <img v-if="project.illustration_1" :src="project.illustration_1" :alt="project.title"
+                        class="h-40 rounded-md" />
+                    <img v-if="project.illustration_2" :src="project.illustration_2" :alt="project.title"
+                        class="h-40 rounded-md" />
+                    <img v-if="project.illustration_3" :src="project.illustration_3" :alt="project.title"
+                        class="h-40 rounded-md" />
+                    <img v-if="project.illustration_4" :src="project.illustration_4" :alt="project.title"
+                        class="h-40 rounded-md" />
                 </div>
             </div>
         </div>

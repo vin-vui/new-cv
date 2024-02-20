@@ -1,6 +1,6 @@
 <template>
     <TransitionRoot as="template">
-        <Dialog as="div" class="relative z-10" @close="close">
+        <Dialog as="div" class="relative z-50" @close="close">
 
             <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100"
                 leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
@@ -15,16 +15,16 @@
                         leave-from="opacity-100 translate-y-0 sm:scale-100"
                         leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
                         <DialogPanel
-                            class="relative transform overflow-hidden bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+                            class="relative rounded-3xl transform overflow-hidden bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl ">
 
                             <DialogTitle as="h3"
-                                class=" text-base text-center font-semibold leading-6 text-gray-50 py-2 rounded-lg"
-                                :class="{ 'bg-yellow-600': skill != null, 'bg-green-600': skill == null }">
+                            class="py-4 text-xl text-center font-semibold leading-6 text-gray-800 bg-opacity-80"
+                                :class="{ 'bg-yellow-400': skill != null, 'bg-green-400': skill == null }">
                                 <span v-if="skill != null">Update Skill</span>
                                 <span v-else>Add Skill</span>
                             </DialogTitle>
 
-                            <div class="mt-3 sm:mt-5 flex flex-col gap-4">
+                            <div class="flex flex-col gap-4 p-4">
                                 <form @submit.prevent="submit" enctype="multipart/form-data"
                                     class="flex flex-col w-full gap-4">
                                     <input type="hidden" v-model="form.id">
