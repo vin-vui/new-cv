@@ -76,32 +76,25 @@
 
         <!-- Static sidebar for desktop -->
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-40 lg:flex lg:w-64 lg:flex-col ">
-            <div class="flex grow flex-col gap-y-5 overflow-y-auto pl-6 overflow-x-hidden">
-                <div class="flex h-16 shrink-0 items-center">
-                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
-                </div>
-                <nav class="flex flex-1 flex-col">
+            <div class="flex grow flex-col gap-y-5 overflow-y-auto pt-4 overflow-x-hidden">
+                <a :href="route('profile.show')"
+                    class="flex items-center gap-2 mr-6 bg-gray-100 rounded-r-full focus:outline-none focus:border-gray-300 transition">
+                    <img class="size-20 rounded-r-full object-cover" :src="$page.props.auth.user.profile_photo_url" :alt="$page.props.auth.user.name">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-amber-500 text-xl font-semibold">{{ $page.props.auth.user.name }}'s CV</span>
+                </a>
+                <nav class="flex flex-1 flex-col pl-6">
                     <ul role="list" class="flex flex-1 flex-col gap-y-7">
                         <li>
                             <ul role="list" class="-mx-2 space-y-1">
                                 <li v-for="item in navigation" :key="item.name" class="relative">
                                     <a :href="item.href"
-                                        :class="[item.current ? 'bg-gray-100 text-gray-800 active' : 'text-gray-50 hover:text-gray-800 hover:bg-gray-100/50', 'group flex gap-x-3 rounded-l-full p-4 text-sm leading-6 font-semibold']">
-                                        <component :is="item.icon" class="size-6 shrink-0 text-blue-500" aria-hidden="true" />
+                                        :class="[item.current ? 'bg-gray-100 text-gray-800 active' : 'text-gray-50 hover:text-gray-800 hover:bg-gray-100/50', 'capitalize group flex gap-x-3 rounded-l-full p-4 text-sm leading-6 font-semibold transition-all duration-200']">
+                                        <component :is="item.icon" class="size-6 shrink-0 text-blue-500"
+                                            aria-hidden="true" />
                                         {{ item.name }}
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="-mx-6 mt-auto">
-                            <a href="#"
-                                class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-gray-800">
-                                <img class="h-8 w-8 rounded-full bg-gray-800"
-                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                    alt="" />
-                                <span class="sr-only">Your profile</span>
-                                <span aria-hidden="true">Tom Cook</span>
-                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -154,15 +147,13 @@ import Banner from '@/Components/Banner.vue';
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import {
     Bars3Icon,
-    CalendarIcon,
-    ChartPieIcon,
     AcademicCapIcon,
     FolderIcon,
     HomeIcon,
     UsersIcon,
     XMarkIcon,
-    LinkIcon,
-    ArrowTopRightOnSquareIcon
+    ArrowTopRightOnSquareIcon,
+    Cog6ToothIcon
 } from '@heroicons/vue/24/outline'
 
 defineProps({
@@ -170,16 +161,18 @@ defineProps({
 });
 
 const navigation = [
-    { name: 'Dashboard', href: route('dashboard'), icon: HomeIcon, current: route().current('dashboard') },
-    { name: 'Compétences', href: route('skills.index'), icon: UsersIcon, current: route().current('skills.index') },
-    { name: 'Formations', href: route('formations.index'), icon: AcademicCapIcon, current: route().current('formations.index') },
-    { name: 'Liens externes', href: route('links.index'), icon: ArrowTopRightOnSquareIcon, current: route().current('links.index') },
-    { name: 'Projets', href: route('projects.index'), icon: FolderIcon, current: route().current('projects.index') },
+    { name: 'dashboard', href: route('dashboard'), icon: HomeIcon, current: route().current('dashboard') },
+    { name: 'à propos', href: route('about.index'), icon: UsersIcon, current: route().current('about.index') },
+    { name: 'compétences', href: route('skills.index'), icon: Cog6ToothIcon, current: route().current('skills.index') },
+    { name: 'formations', href: route('formations.index'), icon: AcademicCapIcon, current: route().current('formations.index') },
+    { name: 'liens externes', href: route('links.index'), icon: ArrowTopRightOnSquareIcon, current: route().current('links.index') },
+    { name: 'projets', href: route('projects.index'), icon: FolderIcon, current: route().current('projects.index') },
 ]
 
+const title = 'Senior Fullstack Developer'
 const sidebarOpen = ref(false)
-
 const logout = () => {
     router.post(route('logout'));
 };
+
 </script>
