@@ -2,10 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .bg-primary {
+        @apply bg-gradient-to-r from-cyan-500 to-amber-500;
+    }
+}
+
 [x-cloak] {
     display: none;
 }
-
 
 .active:before {
     content: "";
