@@ -14,6 +14,14 @@
     .textarea-primary {
         @apply block rounded-3xl flex-1 border-2 border-gray-200 bg-white py-1.5 text-gray-900 placeholder:text-gray-400 focus:border-amber-400 focus:ring-0 sm:text-sm sm:leading-6;
     }
+
+    .btn-submit {
+        @apply inline-flex items-center gap-2 rounded-full bg-green-500 px-5 py-4 text-lg uppercase tracking-widest font-semibold text-white shadow-sm hover:bg-green-600 hover:scale-105 hover:shadow-xl transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600;
+    }
+
+    .btn-go-back {
+        @apply inline-flex items-center gap-2 rounded-full border border-blue-500 bg-white px-5 py-4 text-lg uppercase tracking-widest font-semibold text-blue-500 hover:scale-95 hover:shadow-inner transition-all duration-200 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600;
+    }
 }
 
 [x-cloak] {

@@ -30,44 +30,44 @@
                                     <input type="hidden" v-model="form.id">
                                     <div class="flex flex-col justify-start">
                                         <InputLabel value="Title" />
-                                        <input type="text" v-model="form.title">
+                                        <input type="text" v-model="form.title" class="input-primary">
                                         <InputError :message="form.errors.title" />
                                     </div>
                                     <div class="flex flex-col justify-start">
                                         <InputLabel value="School" />
-                                        <input type="text" v-model="form.school">
+                                        <input type="text" v-model="form.school" class="input-primary">
                                         <InputError :message="form.errors.school" />
                                     </div>
                                     <div class="flex flex-col justify-start">
                                         <InputLabel value="Date" />
-                                        <input v-model="form.year" type="text">
+                                        <input v-model="form.year" type="text" class="input-primary">
                                         <InputError :message="form.errors.year" />
                                     </div>
                                     <div class="flex flex-col justify-start">
                                         <InputLabel value="Description" />
-                                        <textarea class="" v-model="form.description"></textarea>
+                                        <textarea v-model="form.description" rows="10" class="textarea-primary"></textarea>
                                         <InputError :message="form.errors.description" />
                                     </div>
 
                                     <div class="flex items-center justify-between gap-4 mt-4">
                                         <button type="button"
-                                            class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                            class="btn-go-back"
                                             @click="close">
                                             <ArrowLeftIcon class="mr-1 h-5 w-5" aria-hidden="true" />
                                             Go back
                                         </button>
+                                        <div v-if="formation != null">
+                                            <VueConfirmationButton class="text-red-600 hover:text-red-800 whitespace-nowrap transition-all duration-200"
+                                                :messages="customMessages" v-on:confirmation-success="deleteFormation">
+                                            </VueConfirmationButton>
+                                        </div>
                                         <button :loading="form.processing" :disabled="form.processing"
-                                            class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
+                                            class="btn-submit">
                                             <CheckIcon class="mr-1 h-5 w-5" aria-hidden="true" />
                                             Submit
                                         </button>
                                     </div>
                                 </form>
-                            </div>
-                            <div v-if="formation != null" class="flex justify-end mt-4">
-                                <VueConfirmationButton class="text-red-600 hover:text-red-800 transition-all duration-200"
-                                    :messages="customMessages" v-on:confirmation-success="deleteFormation">
-                                </VueConfirmationButton>
                             </div>
                         </DialogPanel>
                     </TransitionChild>

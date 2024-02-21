@@ -58,7 +58,7 @@
 
                     <div class="mt-6 flex justify-end">
                         <button :loading="form.processing" :disabled="form.processing"
-                            class="inline-flex items-center gap-2 rounded-full bg-green-500 px-5 py-4 text-lg uppercase tracking-widest font-semibold text-white shadow-sm hover:bg-green-600 hover:scale-105 hover:shadow-xl transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
+                            class="btn-submit">
                             <CheckIcon class="mr-1 size-6" aria-hidden="true" />
                             Submit
                         </button>

@@ -18,7 +18,7 @@
                             class="relative rounded-3xl transform overflow-hidden bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl ">
 
                             <DialogTitle as="h3"
-                            class="py-4 text-xl text-center font-semibold leading-6 text-gray-800 bg-opacity-80"
+                                class="py-4 text-xl text-center font-semibold leading-6 text-gray-800 bg-opacity-80"
                                 :class="{ 'bg-yellow-400': skill != null, 'bg-green-400': skill == null }">
                                 <span v-if="skill != null">Update Skill</span>
                                 <span v-else>Add Skill</span>
@@ -28,56 +28,78 @@
                                 <form @submit.prevent="submit" enctype="multipart/form-data"
                                     class="flex flex-col w-full gap-4">
                                     <input type="hidden" v-model="form.id">
-                                    <div class="flex flex-col justify-start">
-                                        <InputLabel value="Title" />
-                                        <input type="text" v-model="form.title">
-                                        <InputError :message="form.errors.title" />
-                                    </div>
-                                    <div class="flex flex-col justify-start">
-                                        <InputLabel value="Image" />
-                                        <input type="file" accept="image/*" ref="photo" @change="previewImage">
-                                        <img v-if="preview" :src="preview" class="object-contain h-32 mt-4" />
-                                        <InputError :message="form.errors.img" />
-                                    </div>
-                                    <div class="flex flex-col justify-start">
-                                        <InputLabel value="Url Externe" />
-                                        <input type="text" v-model="form.url">
-                                        <InputError :message="form.errors.url" />
-                                    </div>
-                                    <div class="flex flex-col justify-start">
-                                        <InputLabel value="Description" />
-                                        <textarea class="" v-model="form.description"></textarea>
-                                        <InputError :message="form.errors.description" />
-                                    </div>
-                                    <div class="flex flex-col justify-start">
-                                        <InputLabel value="Level" />
-                                        <select v-model="form.level">
-                                            <option v-for="option in options" :key="option.value" :value="option.value">
-                                                {{ option.text }}
-                                            </option>
-                                        </select>
-                                        <InputError :message="form.errors.level" />
+
+                                    <div class="flex gap-6">
+                                        <div class="flex flex-col justify-start">
+                                            <InputLabel value="Image" />
+                                            <div
+                                                class="flex justify-center rounded-3xl border-2 border-dashed border-gray-200 bg-white px-6 py-10">
+                                                <div class="flex flex-col justify-center text-center">
+                                                    <img v-if="preview" :src="preview" class="object-contain h-32" />
+                                                    <PhotoIcon v-else class="mx-auto size-12 text-gray-300"
+                                                        aria-hidden="true" />
+                                                    <div class="mt-4 flex justify-center text-sm leading-6 text-gray-600">
+                                                        <label for="file-upload"
+                                                            class="relative cursor-pointer px-2 rounded-3xl bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+                                                            <span>Upload a file</span>
+                                                            <input id="file-upload" type="file" accept="image/*" ref="photo"
+                                                                @change="previewImage" class="sr-only">
+                                                        </label>
+                                                        <p class="pl-1">or drag and drop</p>
+                                                    </div>
+                                                    <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="grow flex flex-col gap-4">
+                                            <div class="flex flex-col justify-start">
+                                                <InputLabel value="Title" />
+                                                <input type="text" v-model="form.title" class="input-primary">
+                                                <InputError :message="form.errors.title" />
+                                            </div>
+                                            <div class="flex flex-col justify-start">
+                                                <InputLabel value="Url Externe" />
+                                                <input type="url" v-model="form.url" class="input-primary">
+                                                <InputError :message="form.errors.url" />
+                                            </div>
+                                            <div class="flex flex-col justify-start">
+                                                <InputLabel value="Description" />
+                                                <textarea v-model="form.description" class="textarea-primary" rows="5"></textarea>
+                                                <InputError :message="form.errors.description" />
+                                            </div>
+                                            <div class="flex flex-col justify-start">
+                                                <InputLabel value="Level" />
+                                                <select v-model="form.level" class="input-primary">
+                                                    <option v-for="option in options" :key="option.value"
+                                                        :value="option.value">
+                                                        {{ option.text }}
+                                                    </option>
+                                                </select>
+                                                <InputError :message="form.errors.level" />
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="flex items-center justify-between gap-4 mt-4">
                                         <button type="button"
-                                            class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                            class="btn-go-back"
                                             @click="close">
                                             <ArrowLeftIcon class="mr-1 h-5 w-5" aria-hidden="true" />
                                             Go back
                                         </button>
-                                        <button :loading="form.processing" :disabled="form.processing"
-                                            class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
-                                            <CheckIcon class="mr-1 h-5 w-5" aria-hidden="true" />
+                                        <div v-if="skill != null" class="">
+                                            <VueConfirmationButton
+                                                class="text-red-600 hover:text-red-800 transition-all duration-200 whitespace-nowrap"
+                                                :messages="customMessages" v-on:confirmation-success="deleteSkill">
+                                            </VueConfirmationButton>
+                                        </div>
+                                        <button :loading="form.processing" :disabled="form.processing" class="btn-submit">
+                                            <CheckIcon class="mr-1 size-5" aria-hidden="true" />
                                             Submit
                                         </button>
                                     </div>
                                 </form>
-                            </div>
-                            <div v-if="skill != null" class="flex justify-end mt-4">
-                                <VueConfirmationButton class="text-red-600 hover:text-red-800 transition-all duration-200"
-                                    :messages="customMessages" v-on:confirmation-success="deleteSkill">
-                                </VueConfirmationButton>
                             </div>
                         </DialogPanel>
                     </TransitionChild>

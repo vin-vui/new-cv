@@ -29,66 +29,61 @@
                                     class="flex flex-col w-full gap-4">
 
                                     <div class="flex gap-8">
-                                        <!-- form -->
-                                        <div class="flex flex-col gap-2 basis-2/5">
+
+                                        <div class="flex flex-col gap-4 basis-2/5">
                                             <input type="hidden" v-model="form.id">
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Title" />
-                                                <input type="text" v-model="form.title">
+                                                <input type="text" v-model="form.title" class="input-primary">
                                                 <InputError :message="form.errors.title" />
                                             </div>
 
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Url Externe" />
-                                                <input type="url" v-model="form.url">
+                                                <input type="url" v-model="form.url" class="input-primary">
                                                 <InputError :message="form.errors.url" />
                                             </div>
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Description" />
-                                                <textarea class="" v-model="form.description"></textarea>
+                                                <textarea v-model="form.description" class="textarea-primary"></textarea>
                                                 <InputError :message="form.errors.description" />
                                             </div>
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Client" />
-                                                <input type="text" v-model="form.client">
+                                                <input type="text" v-model="form.client" class="input-primary">
                                                 <InputError :message="form.errors.client" />
                                             </div>
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Job" />
-                                                <input type="text" v-model="form.job">
+                                                <input type="text" v-model="form.job" class="input-primary">
                                                 <InputError :message="form.errors.job" />
                                             </div>
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Github" />
-                                                <input type="url" v-model="form.github">
+                                                <input type="url" v-model="form.github" class="input-primary">
                                                 <InputError :message="form.errors.github" />
                                             </div>
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Start Date" />
-                                                <input type="date" v-model="form.start_date">
+                                                <input type="date" v-model="form.start_date" class="input-primary">
                                                 <InputError :message="form.errors.start_date" />
                                             </div>
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="End Date" />
-                                                <input type="date" v-model="form.end_date">
+                                                <input type="date" v-model="form.end_date" class="input-primary">
                                                 <InputError :message="form.errors.end_date" />
                                             </div>
 
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Skills" />
                                                 <div class="flex gap-2 flex-wrap">
-                                                    <div v-for="skill in skills" class="flex items-center gap-1">
-                                                        <input type="checkbox" :id="skill.id" :value="skill.id"
-                                                            v-model="form.skills">
-                                                        <label :for="skill.id">{{ skill.title }}</label>
+                                                    <div v-for="skill in skills" class="flex items-center gap-1 bg-gray-100 py-0.5 px-2 rounded-full">
+                                                        <input type="checkbox" :id="skill.id" :value="skill.id" v-model="form.skills" class="rounded border-0 text-amber-500 focus:ring-amber-500">
+                                                        <label :for="skill.id" class="cursor-pointer">{{ skill.title }}</label>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="flex items-center gap-4 mt-4 border px-4 py-2 bg-blue-400 text-gray-50 rounded-md">
-                                                <input type="checkbox" id="checkbox" v-model="form.is_printable" />
-                                                <label for="checkbox">Printable</label>
-                                            </div>
                                         </div>
 
                                         <!-- Illustrations -->
@@ -132,28 +127,33 @@
                                                     class="object-contain h-32 mt-4 border" />
                                                 <InputError :message="form.errors.illustration_4" />
                                             </div>
+
+                                            <div class="h-min self-end flex items-center gap-4 px-4 py-2 bg-cyan-500/50 text-gray-800 font-semibold rounded-full">
+                                                <input type="checkbox" id="checkbox" v-model="form.is_printable" class="rounded border-0 text-amber-500 focus:ring-amber-500" />
+                                                <label for="checkbox">Printable</label>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="flex items-center justify-between gap-4 mt-4">
                                         <button type="button"
-                                            class="inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                            class="btn-go-back"
                                             @click="close">
                                             <ArrowLeftIcon class="mr-1 h-5 w-5" aria-hidden="true" />
                                             Go back
                                         </button>
+                                        <div v-if="project != null">
+                                            <VueConfirmationButton class="text-red-600 hover:text-red-800 whitespace-nowrap transition-all duration-200"
+                                                :messages="customMessages" v-on:confirmation-success="deleteProject">
+                                            </VueConfirmationButton>
+                                        </div>
                                         <button :loading="form.processing" :disabled="form.processing"
-                                            class="inline-flex justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
+                                            class="btn-submit">
                                             <CheckIcon class="mr-1 h-5 w-5" aria-hidden="true" />
                                             Submit
                                         </button>
                                     </div>
                                 </form>
-                            </div>
-                            <div v-if="project != null" class="flex justify-end mt-4">
-                                <VueConfirmationButton class="text-red-600 hover:text-red-800 transition-all duration-200"
-                                    :messages="customMessages" v-on:confirmation-success="deleteProject">
-                                </VueConfirmationButton>
                             </div>
                         </DialogPanel>
                     </TransitionChild>
