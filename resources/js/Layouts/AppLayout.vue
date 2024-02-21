@@ -89,7 +89,7 @@
                                 <li v-for="item in navigation" :key="item.name" class="relative">
                                     <a :href="item.href"
                                         :class="[item.current ? 'bg-gray-100 text-gray-800 active' : 'text-gray-50 hover:text-gray-800 hover:bg-gray-100/50', 'capitalize group flex gap-x-3 rounded-l-full p-4 text-sm leading-6 font-semibold transition-all duration-200']">
-                                        <component :is="item.icon" class="size-6 shrink-0 text-blue-500"
+                                        <component :is="item.icon" class="size-6 stroke-2 shrink-0 text-amber-400"
                                             aria-hidden="true" />
                                         {{ item.name }}
                                     </a>

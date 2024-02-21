@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Models\About;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class AboutController extends Controller
 {
@@ -19,50 +22,26 @@ class AboutController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $validated_data = Validator::make($request->all(),[
+            'title' => 'required',
+            'img' => [Rule::requiredIf($request->hasFile('img')), 'image', 'mimes:jpeg,jpg,png,gif,svg', 'max:2048'],
+            'subtitle' => 'nullable',
+            'description' => 'nullable',
+            'address' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+        ])->valid();
+
+        if ($request->hasFile('img')) {
+            $path = Storage::disk('public')->put('image', $request->file('img'));
+            $validated_data['img'] = '/storage/'.$path;
+        }
+
+        About::updateOrCreate(['id' => $request->id], $validated_data);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(About $about)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(About $about)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, About $about)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(About $about)
-    {
-        //
-    }
 }
