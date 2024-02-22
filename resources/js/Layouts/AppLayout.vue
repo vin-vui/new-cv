@@ -89,12 +89,19 @@
                                 <li v-for="item in navigation" :key="item.name" class="relative">
                                     <a :href="item.href"
                                         :class="[item.current ? 'bg-gray-100 text-gray-800 active' : 'text-gray-50 hover:text-gray-800 hover:bg-gray-100/50', 'capitalize group flex gap-x-3 rounded-l-full p-4 text-sm leading-6 font-semibold transition-all duration-200']">
-                                        <component :is="item.icon" class="size-6 stroke-2 shrink-0 text-amber-400"
-                                            aria-hidden="true" />
+                                        <component :is="item.icon" class="size-6 stroke-2 shrink-0 text-amber-400" aria-hidden="true" />
                                         {{ item.name }}
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="-ml-6 mt-auto mb-4 mr-6">
+                            <form @submit.prevent="logout">
+                                <button as="button" class="flex gap-2 items-center justify-start w-full pl-8 rounded-r-full py-4 hover:bg-red-600 hover:text-white text-sm leading-6 font-semibold transition-all duration-200">
+                                    <PowerIcon class="size-6" aria-hidden="true" />
+                                    Log Out
+                                </button>
+                            </form>
                         </li>
                     </ul>
                 </nav>
@@ -131,18 +138,11 @@
 </button> -->
 
     <!-- :href="route('profile.show')" -->
-
-    <!-- <form @submit.prevent="logout">
-    <DropdownLink as="button">
-        Log Out
-    </DropdownLink>
-</form> -->
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { Head, Link, router } from '@inertiajs/vue3';
-import ApplicationMark from '@/Components/ApplicationMark.vue';
 import Banner from '@/Components/Banner.vue';
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import {
@@ -153,7 +153,8 @@ import {
     UsersIcon,
     XMarkIcon,
     ArrowTopRightOnSquareIcon,
-    Cog6ToothIcon
+    Cog6ToothIcon,
+    PowerIcon
 } from '@heroicons/vue/24/outline'
 
 defineProps({

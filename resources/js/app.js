@@ -10,7 +10,7 @@ import 'tippy.js/dist/tippy.css';
 import PerfectScrollbar from 'vue3-perfect-scrollbar'
 import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'
 
-const appName = import.meta.env.APP_NAME;
+const appName = import.meta.env.VITE_APP_NAME;
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
