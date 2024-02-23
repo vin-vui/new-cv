@@ -22,7 +22,7 @@ createInertiaApp({
             .use(PerfectScrollbar, {
                 watchOptions: true,
                 options: {
-                  suppressScrollX: true
+                    suppressScrollX: true
                 }
             })
             .use(VueTippy, {
@@ -33,4 +33,10 @@ createInertiaApp({
     progress: {
         color: '#4B5563',
     },
+});
+
+document.addEventListener('mousemove', function (e) {
+    var light = document.querySelector('.light');
+    light.style.left = e.pageX + 'px';
+    light.style.top = e.pageY + 'px';
 });
