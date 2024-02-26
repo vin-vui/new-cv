@@ -11,6 +11,16 @@
                         <InputError :message="form.errors.title" />
                     </div>
                     <div class="flex flex-col justify-start">
+                        <InputLabel value="Subtitle" />
+                        <input type="text" v-model="form.subtitle" class="input-primary">
+                        <InputError :message="form.errors.subtitle" />
+                    </div>
+                    <div class="flex flex-col justify-start">
+                        <InputLabel value="Catch Phrase" />
+                        <input type="text" v-model="form.catch_phrase" class="input-primary">
+                        <InputError :message="form.errors.catch_phrase" />
+                    </div>
+                    <div class="flex flex-col justify-start">
                         <InputLabel value="Cover" />
                         <div class="mt-2 flex justify-center rounded-3xl border-2 border-dashed border-gray-200 bg-white px-6 py-10">
                             <div class="text-center">
@@ -29,11 +39,6 @@
                         </div>
 
                         <InputError :message="form.errors.img" />
-                    </div>
-                    <div class="flex flex-col justify-start">
-                        <InputLabel value="Subtitle" />
-                        <input type="text" v-model="form.subtitle" class="input-primary">
-                        <InputError :message="form.errors.subtitle" />
                     </div>
                     <div class="flex flex-col justify-start">
                         <InputLabel value="Address" />
@@ -96,6 +101,7 @@ export default {
             form: this.$inertia.form({
                 id: null,
                 title: '',
+                catch_phrase: '',
                 img: null,
                 subtitle: '',
                 description: '',
@@ -135,6 +141,7 @@ export default {
     mounted() {
         this.form.id = this.about?.id;
         this.form.title = this.about?.title;
+        this.form.catch_phrase = this.about?.catch_phrase;
         this.form.img = this.about?.img;
         this.preview = this.about?.img;
         this.form.subtitle = this.about?.subtitle;

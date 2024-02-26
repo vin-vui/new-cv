@@ -123,11 +123,11 @@
         </div>
 
         <main class="lg:pl-64 py-4">
-            <div class="rounded-3xl mr-4 p-10 min-h-screen">
+            <div class="rounded-3xl mr-4 p-10 min-h-screen bg-gray-100">
                 <slot />
             </div>
         </main>
-        
+
     </perfect-scrollbar>
 </template>
 

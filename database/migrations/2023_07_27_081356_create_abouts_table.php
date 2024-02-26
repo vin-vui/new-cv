@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('subtitle');
+            $table->string('catch_phrase');
             $table->text('description');
             $table->string('img');
             $table->string('address');

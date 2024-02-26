@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\SkillController;
@@ -8,6 +7,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\FormationController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\LinkController;
+use App\Http\Controllers\FrontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +20,7 @@ use App\Http\Controllers\LinkController;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', [FrontController::class, 'index'])->name('welcome');
 
 Route::middleware([
     'auth:sanctum',

@@ -30,6 +30,7 @@ class AboutController extends Controller
             'title' => 'required',
             'img' => [Rule::requiredIf($request->hasFile('img')), 'image', 'mimes:jpeg,jpg,png,gif,svg', 'max:2048'],
             'subtitle' => 'nullable',
+            'catch_phrase' => 'nullable',
             'description' => 'nullable',
             'address' => 'required',
             'phone' => 'required',
