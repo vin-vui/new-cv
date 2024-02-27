@@ -20,8 +20,8 @@
 
 <script>
 import AppLayout from '@/Layouts/AppLayout.vue'
-import FormationCard from '@/Pages/Formations/Card.vue'
-import FormationModal from '@/Pages/Formations/Modal.vue'
+import FormationCard from '@/Pages/Back/Formations/Card.vue'
+import FormationModal from '@/Pages/Back/Formations/Modal.vue'
 import { PlusCircleIcon } from '@heroicons/vue/20/solid'
 
 export default {

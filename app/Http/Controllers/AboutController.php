@@ -18,7 +18,7 @@ class AboutController extends Controller
     {
         $about = About::first();
 
-        return Inertia::render('About/Index', compact('about'));
+        return Inertia::render('Back/About/Index', compact('about'));
     }
 
     /**

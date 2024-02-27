@@ -18,7 +18,7 @@ class SkillController extends Controller
     {
         $skills = Skill::orderBy('title')->get();
 
-        return Inertia::render('Skills/Index', compact('skills'));
+        return Inertia::render('Back/Skills/Index', compact('skills'));
     }
 
     /**

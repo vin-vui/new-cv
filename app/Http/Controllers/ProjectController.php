@@ -20,7 +20,7 @@ class ProjectController extends Controller
         $projects = Project::with('skills')->get();
         $skills = Skill::all();
 
-        return Inertia::render('Projects/Index', compact('projects', 'skills'));
+        return Inertia::render('Back/Projects/Index', compact('projects', 'skills'));
     }
 
     /**
@@ -28,7 +28,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $validated_data = Validator::make($request->all(),[
             'title' => 'required',
             'client' => 'required',

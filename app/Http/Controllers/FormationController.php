@@ -16,7 +16,7 @@ class FormationController extends Controller
     {
         $formations = Formation::latest('year')->get();
 
-        return Inertia::render('Formations/Index', compact('formations'));
+        return Inertia::render('Back/Formations/Index', compact('formations'));
     }
 
     /**

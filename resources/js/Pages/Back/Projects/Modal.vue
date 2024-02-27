@@ -25,11 +25,8 @@
                             </DialogTitle>
 
                             <div class="flex flex-col gap-4 p-4">
-                                <form @submit.prevent="submit" enctype="multipart/form-data"
-                                    class="flex flex-col w-full gap-4">
-
+                                <div class="flex flex-col w-full gap-4">
                                     <div class="flex gap-8">
-
                                         <div class="flex flex-col gap-4 basis-2/5">
                                             <input type="hidden" v-model="form.id">
                                             <div class="flex flex-col justify-start">
@@ -147,13 +144,13 @@
                                                 :messages="customMessages" v-on:confirmation-success="deleteProject">
                                             </VueConfirmationButton>
                                         </div>
-                                        <button :loading="form.processing" :disabled="form.processing"
+                                        <button type="button" @click="submit" :loading="form.processing" :disabled="form.processing"
                                             class="btn-submit">
                                             <CheckIcon class="mr-1 h-5 w-5" aria-hidden="true" />
                                             Submit
                                         </button>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </DialogPanel>
                     </TransitionChild>

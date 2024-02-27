@@ -16,7 +16,7 @@ class LinkController extends Controller
     {
         $links = Link::orderBy('title')->get();
 
-        return Inertia::render('Links/Index', compact('links'));
+        return Inertia::render('Back/Links/Index', compact('links'));
     }
 
     /**
