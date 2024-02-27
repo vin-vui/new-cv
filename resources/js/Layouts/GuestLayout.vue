@@ -1,5 +1,5 @@
 <template>
-    <perfect-scrollbar class="bg-slate-900 leading-relaxed text-slate-400 antialiased">
+    <div class="bg-slate-900 leading-relaxed text-slate-400 antialiased">
 
         <div class="light"></div>
 
@@ -9,7 +9,7 @@
             <slot />
         </main>
 
-    </perfect-scrollbar>
+    </div>
 </template>
 
 <script setup>

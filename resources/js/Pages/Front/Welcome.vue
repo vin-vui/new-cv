@@ -73,7 +73,7 @@
         <!-- Static sidebar for desktop -->
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col py-8">
             <div class="flex grow flex-col gap-y-5 px-6 overflow-y-auto">
-                <div class="flex flex-col items-center">
+                <div class="flex flex-col items-center pointer-events-none">
                     <h1 class="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">{{ about.title }}</h1>
                     <h2 class="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">{{ about.subtitle }}</h2>
                     <h3 class="mt-4 max-w-xs leading-normal">{{ about.catch_phrase }}</h3>
@@ -96,10 +96,12 @@
                         <li class="mt-auto">
                             <ul class="flex flex-row gap-5">
                                 <li v-for="link in links" :key="link.url">
-                                    <a :href="link.url" target="_blank" rel="noopener noreferrer">
-                                        <span class="sr-only">{{ link.title }}</span>
-                                        <span v-html="link.img" class="link"></span>
-                                    </a>
+                                    <tippy :content="link.title" class="flex items-center gap-1">
+                                        <a :href="link.url" target="_blank" rel="noopener noreferrer">
+                                            <span class="sr-only">{{ link.title }}</span>
+                                            <span v-html="link.img" class="link"></span>
+                                        </a>
+                                    </tippy>
                                 </li>
                             </ul>
                         </li>
@@ -115,13 +117,14 @@
             </button>
         </div>
 
-        <div class="py-10 lg:pl-72">
-            <div class="px-4 sm:px-6 lg:px-8">
-                <div class="py-12 min-h-screen">
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
+        <div class="lg:pl-72 relative">
+                <div class="min-h-screen">
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 relative flex flex-col gap-24">
+                        <!-- <img :src="about.img" alt=""> -->
+                        <About :about="about" :user="user" />
+                        <Skills :skills="skills" />
+                        <Projects :projects="projects" />
                     </div>
-                </div>
             </div>
         </div>
 
@@ -131,6 +134,9 @@
 <script setup>
 
 import GuestLayout from '@/Layouts/GuestLayout.vue';
+import About from '@/Pages/Front/About.vue';
+import Skills from '@/Pages/Front/Skills.vue';
+import Projects from '@/Pages/Front/Projects.vue';
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
@@ -139,6 +145,9 @@ defineProps({
     title: String,
     about: Object,
     links: Object,
+    user: Object,
+    skills: Object,
+    projects: Object,
 });
 
 const currentAnchor = ref(window.location.hash);
@@ -158,8 +167,8 @@ onUnmounted(() => {
 const navigation = ref([
     { name: 'à propos', href: '#about' },
     { name: 'compétences', href: '#skills' },
-    { name: 'formations', href: '#formations' },
     { name: 'projets', href: '#projects' },
+    { name: 'formations', href: '#formations' },
 ]);
 
 const navigationWithCurrent = computed(() =>
