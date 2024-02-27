@@ -6,10 +6,10 @@
                 <span>compétences</span>
             </h4>
         </div>
-        <div class="flex flex-wrap group/list">
-            <a :href="skill.url" target="_blank" v-for="skill in skills" :key="skill.id" class="relative group lg:hover:!opacity-100 lg:group-hover/list:opacity-50 py-5 px-8 cursor-pointer hover:bg-amber-400/10 rounded-md transition-all duration-200 motion-reduce:transition-none ">
+        <div class="flex flex-wrap">
+            <a v-for="skill in skills" :href="skill.url" target="_blank" :key="skill.id" class="relative group py-5 px-8 cursor-pointer rounded-md transition-all duration-200 motion-reduce:transition-none hover:bg-amber-400/10 hover:shadow-[inset_0_1px_0_0_rgba(252,211,77,0.1)] hover:drop-shadow-lg">
                 <div class="flex flex-col items-center gap-3">
-                    <img :src="skill.img" :alt="'logo de '+skill.title" class="size-12">
+                    <img :src="skill.img" :alt="'logo de la compétence '+skill.title" class="size-12">
                     <span class="font-semibold group-hover:text-amber-300">{{ skill.title }}</span>
                 </div>
             </a>

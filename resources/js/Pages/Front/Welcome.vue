@@ -1,6 +1,15 @@
 <template>
     <GuestLayout>
 
+        <!-- Mobile button to show/hide the menu -->
+        <div class="sticky top-0 z-40 flex items-center gap-x-6  px-4 py-4 shadow-sm sm:px-6 lg:hidden">
+            <button type="button" class="-m-2.5 p-2.5 text-indigo-200 lg:hidden" @click="sidebarOpen = true">
+                <span class="sr-only">Open sidebar</span>
+                <Bars3Icon class="h-6 w-6" aria-hidden="true" />
+            </button>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
         <TransitionRoot as="template" :show="sidebarOpen">
             <Dialog as="div" class="relative z-50 lg:hidden" @close="sidebarOpen = false">
                 <TransitionChild as="template" enter="transition-opacity ease-linear duration-300" enter-from="opacity-0"
@@ -72,7 +81,7 @@
 
         <!-- Static sidebar for desktop -->
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col py-8">
-            <div class="flex grow flex-col gap-y-5 px-6 overflow-y-auto">
+            <div class="flex grow flex-col gap-y-5 pl-8 overflow-y-auto">
                 <div class="flex flex-col items-center pointer-events-none">
                     <h1 class="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">{{ about.title }}</h1>
                     <h2 class="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">{{ about.subtitle }}</h2>
@@ -110,21 +119,16 @@
             </div>
         </div>
 
-        <div class="sticky top-0 z-40 flex items-center gap-x-6  px-4 py-4 shadow-sm sm:px-6 lg:hidden">
-            <button type="button" class="-m-2.5 p-2.5 text-indigo-200 lg:hidden" @click="sidebarOpen = true">
-                <span class="sr-only">Open sidebar</span>
-                <Bars3Icon class="h-6 w-6" aria-hidden="true" />
-            </button>
-        </div>
-
+        <!-- Content -->
         <div class="lg:pl-72 relative">
-                <div class="min-h-screen">
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 relative flex flex-col gap-24">
-                        <!-- <img :src="about.img" alt=""> -->
-                        <About :about="about" :user="user" />
-                        <Skills :skills="skills" />
-                        <Projects :projects="projects" />
-                    </div>
+            <div class="min-h-screen">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 relative flex flex-col gap-24">
+                    <div class="-mt-8 bg-no-repeat bg-center h-96 bg-cover bg-local"
+                        :style="{ backgroundImage: 'url(' + about.img + ')' }"></div>
+                    <About :about="about" :user="user" />
+                    <Skills :skills="skills" />
+                    <Projects :projects="projects" />
+                </div>
             </div>
         </div>
 
