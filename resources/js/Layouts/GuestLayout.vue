@@ -1,7 +1,7 @@
 <template>
-    <div class="bg-slate-900 leading-relaxed text-slate-400 antialiased">
+    <div class="light"></div>
 
-        <div class="light"></div>
+    <div class="bg-slate-900 leading-relaxed text-slate-400 antialiased">
 
         <Head :title="title" />
 

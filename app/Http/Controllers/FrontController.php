@@ -20,7 +20,7 @@ class FrontController extends Controller
         $links = Link::all();
         $user = User::first();
         $skills = Skill::all();
-        $projects = Project::all();
+        $projects = Project::with('skills')->get();
 
         return Inertia::render('Front/Welcome', compact('about', 'links', 'user', 'skills', 'projects'));
     }
