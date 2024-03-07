@@ -128,6 +128,7 @@
                     <About :about="about" :user="user" />
                     <Skills :skills="skills" />
                     <Projects :projects="projects" />
+                    <Formations :formations="formations" />
                 </div>
             </div>
         </div>
@@ -141,6 +142,7 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
 import About from '@/Pages/Front/About.vue';
 import Skills from '@/Pages/Front/Skills.vue';
 import Projects from '@/Pages/Front/Projects.vue';
+import Formations from '@/Pages/Front/Formations.vue';
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
@@ -152,6 +154,7 @@ defineProps({
     user: Object,
     skills: Object,
     projects: Object,
+    formations: Object,
 });
 
 const currentAnchor = ref(window.location.hash);

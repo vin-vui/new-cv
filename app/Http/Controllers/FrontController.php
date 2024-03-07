@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use App\Models\About;
 use App\Models\Skill;
 use App\Models\Project;
+use App\Models\Formation;
 
 class FrontController extends Controller
 {
@@ -21,8 +22,9 @@ class FrontController extends Controller
         $user = User::first();
         $skills = Skill::all();
         $projects = Project::with('skills')->get();
+        $formations = Formation::latest('year')->get();
 
-        return Inertia::render('Front/Welcome', compact('about', 'links', 'user', 'skills', 'projects'));
+        return Inertia::render('Front/Welcome', compact('about', 'links', 'user', 'skills', 'projects', 'formations'));
     }
 
 }
