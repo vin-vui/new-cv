@@ -12,9 +12,9 @@
         <!-- Mobile menu, show/hide based on menu state. -->
         <TransitionRoot as="template" :show="sidebarOpen">
             <Dialog as="div" class="relative z-50 lg:hidden" @close="sidebarOpen = false">
-                <TransitionChild as="template" enter="transition-opacity ease-linear duration-300" enter-from="opacity-0"
-                    enter-to="opacity-100" leave="transition-opacity ease-linear duration-300" leave-from="opacity-100"
-                    leave-to="opacity-0">
+                <TransitionChild as="template" enter="transition-opacity ease-linear duration-300"
+                    enter-from="opacity-0" enter-to="opacity-100" leave="transition-opacity ease-linear duration-300"
+                    leave-from="opacity-100" leave-to="opacity-0">
                     <div class="fixed inset-0 bg-gray-900/80" />
                 </TransitionChild>
 
@@ -64,7 +64,7 @@
                                                         :class="[team.current ? 'bg-indigo-700 text-white' : 'text-indigo-200 hover:text-white hover:bg-indigo-700', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
                                                         <span
                                                             class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-indigo-400 bg-indigo-500 text-[0.625rem] font-medium text-white">{{
-                                                                team.initial }}</span>
+                team.initial }}</span>
                                                         <span class="truncate">{{ team.name }}</span>
                                                     </a>
                                                 </li>
@@ -84,7 +84,8 @@
             <div class="flex grow flex-col gap-y-5 pl-8 overflow-y-auto">
                 <div class="flex flex-col items-center pointer-events-none">
                     <h1 class="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">{{ about.title }}</h1>
-                    <h2 class="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">{{ about.subtitle }}</h2>
+                    <h2 class="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">{{ about.subtitle }}
+                    </h2>
                     <h3 class="mt-4 max-w-xs leading-normal">{{ about.catch_phrase }}</h3>
                 </div>
                 <nav class="flex flex-1 flex-col mt-16">
@@ -92,12 +93,12 @@
                         <li>
                             <ul role="list" class="space-y-1">
                                 <li v-for="item in navigationWithCurrent" :key="item.name">
-                                    <a class="group flex items-center py-3" :href="item.href">
+                                    <a class="group flex items-center py-3" :href="item.href" @click.prevent="scrollToSection(item.href)">
                                         <span
                                             :class="[item.current ? 'w-16 bg-slate-200' : ' w-8 bg-slate-600', 'mr-4 h-px group-focus-visible:w-16 group-focus-visible:bg-slate-200 transition-all group-hover:w-16 group-hover:bg-slate-200 motion-reduce:transition-none']"></span>
                                         <span
                                             :class="[item.current ? 'text-slate-200' : 'text-slate-500', 'text-xs font-bold uppercase tracking-widest group-focus-visible:text-slate-200 group-hover:text-slate-200 ']">{{
-                                                item.name }}</span>
+                item.name }}</span>
                                     </a>
                                 </li>
                             </ul>
@@ -163,14 +164,6 @@ const updateAnchor = () => {
     currentAnchor.value = window.location.hash;
 };
 
-onMounted(() => {
-    window.addEventListener('hashchange', updateAnchor);
-});
-
-onUnmounted(() => {
-    window.removeEventListener('hashchange', updateAnchor);
-});
-
 const navigation = ref([
     { name: 'à propos', href: '#about' },
     { name: 'compétences', href: '#skills' },
@@ -187,5 +180,44 @@ const navigationWithCurrent = computed(() =>
 
 const title = 'Senior Fullstack Developer'
 const sidebarOpen = ref(false)
+
+const scrollToSection = (href) => {
+  const sectionId = href.substring(1); // Supprime le "#" du href pour obtenir l'ID
+  const section = document.getElementById(sectionId);
+
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
+const updateCurrentAnchor = () => {
+  let currentSection = "";
+
+  navigation.value.forEach((navItem) => {
+    const sectionId = navItem.href.substring(1);
+    const section = document.getElementById(sectionId);
+
+    if (section) {
+      const positionFromTop = section.getBoundingClientRect().top;
+
+      if (positionFromTop - window.innerHeight < 0 && positionFromTop < window.innerHeight / 2) {
+        currentSection = navItem.href;
+      }
+    }
+  });
+
+  currentAnchor.value = currentSection;
+};
+
+onMounted(() => {
+    window.addEventListener('hashchange', updateAnchor);
+    window.addEventListener('scroll', updateCurrentAnchor);
+    updateCurrentAnchor();
+});
+
+onUnmounted(() => {
+    window.removeEventListener('hashchange', updateAnchor);
+    window.removeEventListener('scroll', updateCurrentAnchor);
+});
 
 </script>

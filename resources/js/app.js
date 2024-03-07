@@ -37,6 +37,7 @@ createInertiaApp({
 
 document.addEventListener('mousemove', function (e) {
     var light = document.querySelector('.light');
-    light.style.left = e.pageX + 'px';
-    light.style.top = e.pageY + 'px';
+    light.style.left = e.clientX + 'px';
+    light.style.top = e.clientY + 'px';
 });
+

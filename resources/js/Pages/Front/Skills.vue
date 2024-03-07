@@ -6,7 +6,7 @@
                 <span>compétences</span>
             </h4>
         </div>
-        <div ref="skillCardsContainer" class="flex flex-wrap justify-between">
+        <div ref="skillCardsContainer" class="grid xl:grid-cols-8 md:grid-cols-6 sm:grid-cols-4 grid-cols-3 gap-4">
             <a v-for="skill in skills" :href="skill.url" target="_blank" :key="skill.id" class="relative group py-5 px-8 cursor-pointer rounded-md transition-all duration-200 motion-reduce:transition-none hover:bg-amber-400/10 hover:shadow-[inset_0_1px_0_0_rgba(252,211,77,0.1)] hover:drop-shadow-lg">
                 <div class="flex flex-col items-center gap-3">
                     <img :src="skill.img" :alt="'logo de la compétence '+skill.title" class="size-12">
@@ -24,27 +24,27 @@ export default {
             type: Object,
         },
     },
-    mounted() {
-        this.$nextTick(() => {
-            this.adjustCardsWidth();
-        });
-    },
-    methods: {
-        adjustCardsWidth() {
-            let maxWidth = 0;
-            const cards = this.$refs.skillCardsContainer.querySelectorAll('a');
-            // Find the maximum width
-            cards.forEach(card => {
-                const cardWidth = card.offsetWidth;
-                if (cardWidth > maxWidth) {
-                    maxWidth = cardWidth;
-                }
-            });
-            // Apply the maximum width to all elements
-            cards.forEach(card => {
-                card.style.width = maxWidth + 'px';
-            });
-        }
-    }
+    // mounted() {
+    //     this.$nextTick(() => {
+    //         this.adjustCardsWidth();
+    //     });
+    // },
+    // methods: {
+    //     adjustCardsWidth() {
+    //         let maxWidth = 0;
+    //         const cards = this.$refs.skillCardsContainer.querySelectorAll('a');
+    //         // Find the maximum width
+    //         cards.forEach(card => {
+    //             const cardWidth = card.offsetWidth;
+    //             if (cardWidth > maxWidth) {
+    //                 maxWidth = cardWidth;
+    //             }
+    //         });
+    //         // Apply the maximum width to all elements
+    //         cards.forEach(card => {
+    //             card.style.width = maxWidth + 'px';
+    //         });
+    //     }
+    // }
 }
 </script>

@@ -54,7 +54,6 @@
     transform: translate(-50%, -50%);
     transition: background 0.3s, box-shadow 0.3s;
     animation: flicker 3s infinite;
-
 }
 
 .active:before {
