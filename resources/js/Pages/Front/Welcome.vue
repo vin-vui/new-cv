@@ -93,7 +93,8 @@
                         <li>
                             <ul role="list" class="space-y-1">
                                 <li v-for="item in navigationWithCurrent" :key="item.name">
-                                    <a class="group flex items-center py-3" :href="item.href" @click.prevent="scrollToSection(item.href)">
+                                    <a class="group flex items-center py-3" :href="item.href"
+                                        @click.prevent="scrollToSection(item.href)">
                                         <span
                                             :class="[item.current ? 'w-16 bg-slate-200' : ' w-8 bg-slate-600', 'mr-4 h-px group-focus-visible:w-16 group-focus-visible:bg-slate-200 transition-all group-hover:w-16 group-hover:bg-slate-200 motion-reduce:transition-none']"></span>
                                         <span
@@ -124,8 +125,11 @@
         <div class="lg:pl-72 relative">
             <div class="min-h-screen">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 relative flex flex-col gap-24">
-                    <div class="-mt-8 bg-no-repeat bg-center h-96 bg-cover bg-local"
-                        :style="{ backgroundImage: 'url(' + about.img + ')' }"></div>
+                    <div class="-mt-8 bg-no-repeat bg-center h-96 bg-cover bg-local flex flex-col-reverse" :style="{ backgroundImage: 'url(' + about.img + ')' }">
+                        <div class="flex justify-center py-16 bg-gradient-to-b from-transparent to-slate-900 select-none text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
+                            Bienvenue sur mon webfolio
+                        </div>
+                    </div>
                     <About :about="about" :user="user" />
                     <Skills :skills="skills" />
                     <Projects :projects="projects" />
@@ -165,7 +169,7 @@ const updateAnchor = () => {
 };
 
 const navigation = ref([
-    { name: 'à propos', href: '#about' },
+    { name: 'à propos de moi', href: '#about' },
     { name: 'compétences', href: '#skills' },
     { name: 'projets', href: '#projects' },
     { name: 'formations', href: '#formations' },
@@ -182,31 +186,31 @@ const title = 'Senior Fullstack Developer'
 const sidebarOpen = ref(false)
 
 const scrollToSection = (href) => {
-  const sectionId = href.substring(1); // Supprime le "#" du href pour obtenir l'ID
-  const section = document.getElementById(sectionId);
-
-  if (section) {
-    section.scrollIntoView({ behavior: 'smooth' });
-  }
-};
-
-const updateCurrentAnchor = () => {
-  let currentSection = "";
-
-  navigation.value.forEach((navItem) => {
-    const sectionId = navItem.href.substring(1);
+    const sectionId = href.substring(1); // Supprime le "#" du href pour obtenir l'ID
     const section = document.getElementById(sectionId);
 
     if (section) {
-      const positionFromTop = section.getBoundingClientRect().top;
-
-      if (positionFromTop - window.innerHeight < 0 && positionFromTop < window.innerHeight / 2) {
-        currentSection = navItem.href;
-      }
+        section.scrollIntoView({ behavior: 'smooth' });
     }
-  });
+};
 
-  currentAnchor.value = currentSection;
+const updateCurrentAnchor = () => {
+    let currentSection = "";
+
+    navigation.value.forEach((navItem) => {
+        const sectionId = navItem.href.substring(1);
+        const section = document.getElementById(sectionId);
+
+        if (section) {
+            const positionFromTop = section.getBoundingClientRect().top;
+
+            if (positionFromTop - window.innerHeight < 0 && positionFromTop < window.innerHeight / 2) {
+                currentSection = navItem.href;
+            }
+        }
+    });
+
+    currentAnchor.value = currentSection;
 };
 
 onMounted(() => {
