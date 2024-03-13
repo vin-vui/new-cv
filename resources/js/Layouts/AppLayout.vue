@@ -1,5 +1,5 @@
 <template>
-    <perfect-scrollbar class="bg-primary">
+    <div class="bg-primary">
 
         <Head :title="title" />
 
@@ -128,7 +128,7 @@
             </div>
         </main>
 
-    </perfect-scrollbar>
+    </div>
 </template>
 
 <script setup>
