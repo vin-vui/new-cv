@@ -13,6 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $abouts_file_path = resource_path('sql/abouts.sql');
+        DB::unprepared(
+            file_get_contents($abouts_file_path)
+        );
+
         $skills_file_path = resource_path('sql/skills.sql');
         DB::unprepared(
             file_get_contents($skills_file_path)
