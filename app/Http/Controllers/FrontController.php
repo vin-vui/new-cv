@@ -20,8 +20,10 @@ class FrontController extends Controller
         $about = About::first();
         $links = Link::all();
         $user = User::first();
-        $skills = Skill::all();
-        $projects = Project::with('skills')->get();
+        $skills = Skill::orderBy('title')->get();
+        $projects = Project::with(['skills' => function ($query) {
+            $query->orderBy('title');
+        }])->get();
         $formations = Formation::latest('year')->get();
 
         return Inertia::render('Front/Welcome', compact('about', 'links', 'user', 'skills', 'projects', 'formations'));
