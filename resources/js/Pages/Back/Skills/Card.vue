@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white shadow rounded-lg hover:shadow-xl hover:scale-105 cursor-pointer transition-all duration-200">
+    <div class="bg-slate-50 shadow rounded-lg hover:shadow-xl hover:scale-105 cursor-pointer transition-all duration-200">
         <div class="flex">
             <div class="flex-none rounded-l-lg">
                 <img :src="skill.img" :alt="skill.title" class="object-contain w-32 h-32 my-auto p-2" />

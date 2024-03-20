@@ -32,21 +32,20 @@
                                         <div class="flex flex-col justify-start">
                                             <InputLabel value="Image" />
                                             <div
-                                                class="flex justify-center rounded-3xl border-2 border-dashed border-gray-200 bg-white px-6 py-10">
+                                                class="mt-1 flex justify-center rounded-3xl outline-dashed outline-2 outline-offset-2 outline-gray-200 bg-slate-900 px-6 py-10">
                                                 <div class="flex flex-col justify-center text-center">
                                                     <img v-if="preview" :src="preview" class="object-contain h-32" />
                                                     <PhotoIcon v-else class="mx-auto size-12 text-gray-300"
                                                         aria-hidden="true" />
                                                     <div class="mt-4 flex justify-center text-sm leading-6 text-gray-600">
                                                         <label for="file-upload"
-                                                            class="relative cursor-pointer px-2 rounded-3xl bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+                                                            class="relative cursor-pointer px-2 rounded-3xl bg-white font-semibold text-green-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-green-600 focus-within:ring-offset-2 hover:text-green-500">
                                                             <span>Upload a file</span>
                                                             <input id="file-upload" type="file" accept="image/*" ref="photo"
                                                                 @change="previewImage" class="sr-only">
                                                         </label>
-                                                        <p class="pl-1">or drag and drop</p>
                                                     </div>
-                                                    <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                                                    <p class="mt-2 text-xs leading-5 text-gray-600">PNG, JPG, GIF, SVG up to 10MB</p>
                                                 </div>
                                             </div>
                                         </div>
