@@ -8,8 +8,8 @@
             </h4>
         </div>
         <ol class="flex flex-col gap-y-4 group/list">
-            <li v-for="project in projects"
-                class="relative group p-4 cursor-pointer rounded-md transition-all duration-200 motion-reduce:transition-none hover:bg-amber-400/10 hover:shadow-[inset_0_1px_0_0_rgba(252,211,77,0.1)] hover:drop-shadow-lg">
+            <li v-for="project in projects" @click="openProjectUrl(project.url)"
+                class="relative group p-4 cursor-pointer rounded-md transition-all duration-200 motion-reduce:transition-none hover:bg-amber-400/10 hover:shadow-[inset_0_1px_0_0_rgba(252,211,77,0.1)] hover:drop-shadow-lg hover:!opacity-100 group-hover/list:opacity-50">
                 <div class="flex justify-between gap-4">
                     <div class="flex gap-4">
                         <div class="">
@@ -31,10 +31,10 @@
                             <div>
                                 <div class="flex flex-wrap gap-y-2 gap-x-1">
                                     <div v-for="skill in project.skills"
-                                        class="bg-gray-100 border-gray-400 text-gray-800 px-2 py-0.5 rounded-full text-xs">
+                                        class="bg-amber-400/10 group-hover:bg-amber-400/30 px-2 py-0.5 rounded-full text-xs">
                                         <div class="flex items-center gap-1">
                                             <img :src="skill.img" :alt="skill.title" class="h-3">
-                                            <div class="">{{ skill.title }}</div>
+                                            <div class="group-hover:text-slate-300">{{ skill.title }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -102,6 +102,11 @@ export default {
         },
         cleanURL(url) {
             return url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+        },
+        openProjectUrl(url) {
+            if (url) {
+                window.open(url, '_blank');
+            }
         },
     }
 }
