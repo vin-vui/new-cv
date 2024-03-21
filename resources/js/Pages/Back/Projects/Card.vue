@@ -19,7 +19,7 @@
                     </div>
                     <div class="">
                         <div class="bg-gray-100 border border-gray-200 text-gray-600 px-2 py-1 rounded-md">
-                            {{ moment(project.start_date) }} - {{ moment(project.end_date) }}
+                            {{ formatDate(project.start_date) }} - {{ formatDate(project.end_date) }}
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,6 @@
 
 <script>
 import { ArrowTopRightOnSquareIcon } from '@heroicons/vue/20/solid'
-import moment from 'moment'
 
 export default {
     components: {
@@ -91,9 +90,12 @@ export default {
         },
     },
     methods: {
-        moment(date) {
-            return moment(date).format('MMMM Y');
-        }
+        formatDate(date) {
+            const options = { year: 'numeric', month: 'long' };
+            const lang = 'fr-FR'
+            const dateFormatter = new Intl.DateTimeFormat(lang, options);
+            return dateFormatter.format(new Date(date));
+        },
     }
 }
 </script>

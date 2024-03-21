@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -17,6 +16,7 @@ class Project extends Model
         'logo',
         'url',
         'github',
+        'external_url',
         'description',
         'start_date',
         'end_date',

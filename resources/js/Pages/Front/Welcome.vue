@@ -80,7 +80,7 @@
         </TransitionRoot>
 
         <!-- Static sidebar for desktop -->
-        <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col py-8">
+        <div class="hidden lg:fixed lg:inset-y-0 lg:z-40 lg:flex lg:w-72 lg:flex-col py-8">
             <div class="flex grow flex-col gap-y-5 pl-8 overflow-y-auto">
                 <div class="flex flex-col items-center pointer-events-none">
                     <h1 class="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">{{ about.title }}</h1>

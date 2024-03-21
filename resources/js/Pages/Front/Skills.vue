@@ -7,7 +7,7 @@
                 <span>compétences</span>
             </h4>
         </div>
-        <div ref="skillCardsContainer" class="">
+        <div class="">
             <ul class="list-none p-0 m-0 grid xl:grid-cols-8 md:grid-cols-6 sm:grid-cols-4 grid-cols-3 gap-4">
                 <li v-for="skill in skills" :key="skill.id"
                     class="relative group py-5 px-8 cursor-pointer rounded-md transition-all duration-200 motion-reduce:transition-none hover:bg-amber-400/10 hover:shadow-[inset_0_1px_0_0_rgba(252,211,77,0.1)] hover:drop-shadow-lg">

@@ -61,6 +61,11 @@
                                                 <InputError :message="form.errors.github" />
                                             </div>
                                             <div class="flex flex-col justify-start">
+                                                <InputLabel value="External URL" />
+                                                <input type="url" v-model="form.external_url" class="input-primary">
+                                                <InputError :message="form.errors.external_url" />
+                                            </div>
+                                            <div class="flex flex-col justify-start">
                                                 <InputLabel value="Start Date" />
                                                 <input type="date" v-model="form.start_date" class="input-primary">
                                                 <InputError :message="form.errors.start_date" />
@@ -207,6 +212,7 @@ export default {
                 client: '',
                 job: '',
                 github: '',
+                external_url: '',
                 start_date: '',
                 end_date: '',
                 is_printable: '',
@@ -245,6 +251,7 @@ export default {
                 this.form.client = this.project?.client;
                 this.form.job = this.project?.job;
                 this.form.github = this.project?.github;
+                this.form.external_url = this.project?.external_url;
                 this.form.start_date = this.project?.start_date;
                 this.form.end_date = this.project?.end_date;
                 this.form.is_printable = this.project?.is_printable;
