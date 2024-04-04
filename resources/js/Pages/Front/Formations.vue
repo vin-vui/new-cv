@@ -8,12 +8,12 @@
         </div>
         <ol class="flex flex-col gap-y-4 group/list">
             <li v-for="formation in formations"
-                class="relative group p-4 cursor-pointer rounded-md transition-all duration-200 motion-reduce:transition-none hover:bg-amber-400/10 hover:shadow-[inset_0_1px_0_0_rgba(252,211,77,0.1)] hover:drop-shadow-lg hover:!opacity-100 group-hover/list:opacity-50">
+                class="relative group p-4 rounded-md transition-all duration-200 motion-reduce:transition-none hover:bg-amber-400/10 hover:shadow-[inset_0_1px_0_0_rgba(252,211,77,0.1)] hover:drop-shadow-lg hover:!opacity-100 group-hover/list:opacity-50">
                 <div class="flex justify-between gap-4">
                     <div class="flex gap-4">
                         <div class="flex flex-col justify-between">
                             <h3 class="font-medium leading-snug text-slate-200">
-                                <div class="leading-tight text-slate-200 group-hover:text-amber-300 text-base">{{ formation.title }}</div>
+                                <div class="leading-tight text-slate-200 group-hover:text-amber-300 text-lg font-medium tracking-tight sm:text-xl">{{ formation.title }}</div>
                                 <div class="text-slate-500">{{ formation.school }}</div>
                             </h3>
                             <div class="mt-2 text-sm leading-normal whitespace-pre-wrap">{{ formation.description }}</div>

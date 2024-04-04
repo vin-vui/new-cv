@@ -8,10 +8,10 @@
                 <span>projets</span>
             </h4>
         </div>
-        <ol class="flex flex-col gap-y-4 group/list">
+        <ol class="flex flex-col gap-y-8 group/list">
             <li v-for="project in projects" @click="showModal(project)"
                 class="relative group p-4 cursor-pointer rounded-md transition-all duration-200 motion-reduce:transition-none hover:bg-amber-400/10 hover:shadow-[inset_0_1px_0_0_rgba(252,211,77,0.1)] hover:drop-shadow-lg hover:!opacity-100 group-hover/list:opacity-50">
-                <div class="flex items-start">
+                <div class="flex gap-4 items-start">
                     <!-- img -->
                     <div class="basis-1/4">
                         <img :src="project.logo" :alt="project.title" class="w-full h-full object-contain rounded-lg">
@@ -23,7 +23,7 @@
                             <!-- main informations -->
                             <div class="">
                                 <div class="font-medium leading-snug text-slate-200">
-                                    <h3 class="leading-tight text-slate-200 group-hover:text-amber-300">{{ project.title }}</h3>
+                                    <h3 class="leading-tight text-slate-200 group-hover:text-amber-300 text-lg font-medium tracking-tight sm:text-xl">{{ project.title }}</h3>
                                     <div>
                                         <span class="text-slate-500">{{ project.client }}</span>
                                         <span class="text-xs text-slate-600"> — Client</span>
