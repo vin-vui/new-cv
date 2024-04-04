@@ -14,19 +14,24 @@ class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * @return \Inertia\Response
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
-        $projects = Project::with('skills')->get();
-        $skills = Skill::all();
+        $projects = Project::with(['skills' => function ($query) {
+            $query->orderBy('title');
+        }])->orderBy('end_date')->get();
+        $skills = Skill::orderBy('title')->get();
 
         return Inertia::render('Back/Projects/Index', compact('projects', 'skills'));
     }
 
     /**
      * Store a newly created resource in storage.
+     * @param Request $request
+     * @return void
      */
-    public function store(Request $request)
+    public function store(Request $request): void
     {
 
         $validated_data = Validator::make($request->all(),[
@@ -78,6 +83,8 @@ class ProjectController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * @param Project $project
+     * @return void
      */
     public function destroy(Project $project)
     {

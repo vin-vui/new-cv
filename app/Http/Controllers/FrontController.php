@@ -14,8 +14,9 @@ class FrontController extends Controller
 {
     /**
      * Call the front page with the about and links
+     * @return \Inertia\Response
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
         $about = About::first();
         $links = Link::all();
@@ -23,7 +24,7 @@ class FrontController extends Controller
         $skills = Skill::orderBy('title')->get();
         $projects = Project::with(['skills' => function ($query) {
             $query->orderBy('title');
-        }])->orderBy('end_date', 'desc')->get();
+        }])->orderBy('end_date')->get();
         $formations = Formation::latest('year')->get();
 
         return Inertia::render('Front/Welcome', compact('about', 'links', 'user', 'skills', 'projects', 'formations'));

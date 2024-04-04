@@ -2,7 +2,7 @@
     <AppLayout>
 
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 gap-4">
+            <div class="flex flex-col-reverse gap-4">
                 <ProjectCard v-for="project in projects" :key="project.id" :project="project" @click="showModal(project)" />
             </div>
         </div>

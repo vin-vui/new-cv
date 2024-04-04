@@ -18,8 +18,11 @@
                         </div>
                     </div>
                     <div class="">
-                        <div class="bg-gray-100 border border-gray-200 text-gray-600 px-2 py-1 rounded-md">
+                        <div v-if="project.end_date !== null" class="bg-gray-100 border border-gray-200 text-gray-600 px-2 py-1 rounded-md">
                             {{ formatDate(project.start_date) }} - {{ formatDate(project.end_date) }}
+                        </div>
+                        <div v-if="project.end_date === null" class="bg-gray-100 border border-gray-200 text-gray-600 px-2 py-1 rounded-md">
+                            {{ formatDate(project.start_date) }} - aujourd'hui
                         </div>
                     </div>
                 </div>
