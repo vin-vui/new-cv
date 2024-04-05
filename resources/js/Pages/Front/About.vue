@@ -6,12 +6,12 @@
                 <span>à propos de moi</span>
             </h4>
         </div>
-        <div class="flex gap-8">
-            <div class="whitespace-pre-wrap pl-8 pointer-events-none">
+        <div class="flex flex-col-reverse md:flex-row gap-8 items-center md:items-start">
+            <div class="whitespace-pre-wrap md:pl-8 md:pr-0 px-8 pointer-events-none">
                 {{ about .description }}
             </div>
             <div>
-                <img :src="user.profile_photo_url" :alt="about.title" class="rounded-custom -mt-20 z-50 w-[80rem] relative">
+                <img :src="user.profile_photo_url" :alt="about.title" class="rounded-custom md:-mt-20 z-50 md:w-[80rem] md:h-auto h-48 relative">
             </div>
         </div>
     </section>

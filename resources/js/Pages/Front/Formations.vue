@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div
-                        class="bg-amber-400/10 px-3 py-2 rounded-full text-slate-100 self-start text-xs font-semibold uppercase tracking-wide">
+                        class="bg-amber-400/10 px-3 py-2 rounded-full text-slate-100 self-start text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
                         {{ formation.year }}
                     </div>
                 </div>

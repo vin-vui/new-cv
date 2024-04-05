@@ -86,7 +86,7 @@
                                                 Captures d'écran
                                             </div>
                                         </div>
-                                        <div class="grid grid-cols-4 gap-2 mt-4">
+                                        <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-2 mt-4">
                                             <div v-if="project.illustration_1" @click="showFullscreenImage(project.illustration_1)" class="cursor-pointer transition-all duration-200 hover:scale-105">
                                                 <img :src="project.illustration_1" :alt="project.title" class="w-full h-full object-contain">
                                             </div>
@@ -102,14 +102,14 @@
                                         </div>
                                     </div>
                                     <!-- skills -->
-                                    <div class="px-6 mt-8">
-                                        <div class="flex -ml-3">
+                                    <div class="md:px-6 mt-8">
+                                        <div class="flex md:-ml-3 ml-3">
                                             <div class="bg-amber-400/10 px-3 py-2 rounded-full text-slate-100 text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
                                                 Stack Technique
                                             </div>
                                         </div>
                                         <div class="mt-2">
-                                            <ul class="list-none p-0 m-0 grid xl:grid-cols-6 sm:grid-cols-4 grid-cols-3 ">
+                                            <ul class="list-none p-0 m-0 grid xl:grid-cols-6 sm:grid-cols-4 grid-cols-3">
                                                 <li v-for="skill in project.skills" :key="skill.id"
                                                     class="relative group py-5 px-8 cursor-pointer rounded-md transition-all duration-200 motion-reduce:transition-none hover:bg-amber-400/10 hover:shadow-[inset_0_1px_0_0_rgba(252,211,77,0.1)] hover:drop-shadow-lg">
                                                     <a :href="skill.url" target="_blank" rel="noopener noreferrer"

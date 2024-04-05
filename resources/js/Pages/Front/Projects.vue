@@ -11,15 +11,15 @@
         <ol class="flex flex-col gap-y-8 group/list">
             <li v-for="project in projects" @click="showModal(project)"
                 class="relative group p-4 cursor-pointer rounded-md transition-all duration-200 motion-reduce:transition-none hover:bg-amber-400/10 hover:shadow-[inset_0_1px_0_0_rgba(252,211,77,0.1)] hover:drop-shadow-lg hover:!opacity-100 group-hover/list:opacity-50">
-                <div class="flex gap-4 items-start">
+                <div class="flex gap-4 items-start md:flex-row flex-col">
                     <!-- img -->
-                    <div class="basis-1/4">
-                        <img :src="project.logo" :alt="project.title" class="w-full h-full object-contain rounded-lg">
+                    <div class="md:basis-1/4">
+                        <img :src="project.logo" :alt="project.title" class="w-full h-full object-contain">
                     </div>
                     <!-- content -->
-                    <div class="basis-3/4 flex flex-col">
+                    <div class="md:basis-3/4 flex flex-col">
                         <!-- header -->
-                        <div class="flex justify-between">
+                        <div class="flex justify-between md:flex-row flex-col">
                             <!-- main informations -->
                             <div class="">
                                 <div class="font-medium leading-snug text-slate-200">
@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                             <!-- dates -->
-                            <div class="">
+                            <div class="flex md:block mt-4 mb-2 -ml-2 md:my-0 md:-ml-20">
                                 <div v-if="project.end_date !== null" class="bg-amber-400/10 px-3 py-2 rounded-full text-slate-100 text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
                                     {{ formatDate(project.start_date) }} — {{ formatDate(project.end_date) }}
                                 </div>
@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         <!-- links -->
-                        <div class="flex justify-between">
+                        <div class="flex justify-between md:flex-row flex-col">
                             <!-- external links -->
                             <div class="flex gap-2">
                                 <tippy v-if="project.github" content="GitHub du projet">
