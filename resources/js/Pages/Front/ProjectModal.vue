@@ -18,7 +18,13 @@
                             leave="transform transition ease-in-out duration-500 sm:duration-700"
                             leave-from="translate-x-0" leave-to="translate-x-full">
                             <DialogPanel class="pointer-events-auto w-screen max-w-5xl">
-
+                                <DialogTitle class="flex justify-between items-center px-6 py-4 bg-slate-900">
+                                    <h2 class="text-lg font-semibold text-slate-200">{{ project.title }}</h2>
+                                    <button @click="close" class="text-slate-200 hover:text-amber-300">
+                                        <span class="sr-only">Fermer</span>
+                                        <XMarkIcon class="h-6 w-6" aria-hidden="true" />
+                                    </button>
+                                </DialogTitle>
                                 <div class="flex h-full flex-col overflow-y-auto bg-slate-900 pb-6 shadow-xl">
                                     <!-- banner -->
                                     <div class="bg-no-repeat bg-center h-52 bg-fit flex flex-col-reverse"

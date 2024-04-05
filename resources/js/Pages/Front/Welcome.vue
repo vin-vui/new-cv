@@ -36,7 +36,7 @@
                             </TransitionChild>
                             <!-- Sidebar component, swap this element with another sidebar if you like -->
                             <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-slate-900 px-6 pb-2">
-                                <Nav :about="about" :user="user" :links="links" />
+                                <Nav :about="about" :user="user" :links="links" @closeNav="sidebarOpen = false" />
                             </div>
                         </DialogPanel>
                     </TransitionChild>
@@ -52,7 +52,7 @@
         <!-- Content -->
         <div class="lg:pl-72 relative">
             <div class="min-h-screen">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 relative flex flex-col gap-24">
+                <div class="max-w-7xl mx-auto md:px-6 lg:px-8 relative flex flex-col gap-24">
 
                     <div class="md:hidden block px-8 mt-12">
                         <Hero :about="about" />

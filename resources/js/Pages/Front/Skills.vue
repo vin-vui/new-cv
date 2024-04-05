@@ -1,8 +1,8 @@
 <template>
     <section id="skills" aria-labelledby="skills">
-        <div class="sticky top-0 backdrop-blur-sm bg-slate/30 z-40">
+        <div class="sticky top-0 backdrop-blur-sm bg-slate/30 z-30">
             <h4
-                class="flex items-center py-3 mb-3 uppercase text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
+                class="flex items-center py-5 mb-3 uppercase text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
                 <span class="w-16 bg-slate-200 h-px mr-4"></span>
                 <span>compétences</span>
             </h4>

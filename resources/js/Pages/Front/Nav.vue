@@ -8,13 +8,9 @@
                 <li>
                     <ul role="list" class="space-y-1">
                         <li v-for="item in navigationWithCurrent" :key="item.name">
-                            <a class="group flex items-center py-3" :href="item.href"
-                                @click.prevent="scrollToSection(item.href)">
-                                <span
-                                    :class="[item.current ? 'w-16 bg-slate-200' : ' w-8 bg-slate-600', 'mr-4 h-px group-focus-visible:w-16 group-focus-visible:bg-slate-200 transition-all group-hover:w-16 group-hover:bg-slate-200 motion-reduce:transition-none']"></span>
-                                <span
-                                    :class="[item.current ? 'text-slate-200' : 'text-slate-500', 'text-xs font-bold uppercase tracking-widest group-focus-visible:text-slate-200 group-hover:text-slate-200 ']">{{
-            item.name }}</span>
+                            <a class="group flex items-center py-3" :href="item.href" @click.prevent="handleLinkClick(item.href)">
+                                <span :class="[item.current ? 'w-16 bg-slate-200' : ' w-8 bg-slate-600', 'mr-4 h-px group-focus-visible:w-16 group-focus-visible:bg-slate-200 transition-all group-hover:w-16 group-hover:bg-slate-200 motion-reduce:transition-none']"></span>
+                                <span :class="[item.current ? 'text-slate-200' : 'text-slate-500', 'text-xs font-bold uppercase tracking-widest group-focus-visible:text-slate-200 group-hover:text-slate-200 ']">{{ item.name }}</span>
                             </a>
                         </li>
                     </ul>
@@ -52,6 +48,16 @@ export default {
         skills: Object,
         projects: Object,
         formations: Object,
+    },
+
+    methods: {
+        closeNav() {
+            this.$emit('closeNav');
+        },
+        handleLinkClick(href) {
+            this.scrollToSection(href);
+            this.closeNav();
+        },
     },
 
     setup() {

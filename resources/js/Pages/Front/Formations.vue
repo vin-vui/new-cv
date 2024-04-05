@@ -1,7 +1,7 @@
 <template>
     <section id="formations" aria-labelledby="formations">
-        <div class="sticky top-0 backdrop-blur-sm bg-slate/30 z-40">
-            <h4 class="flex items-center py-3 mb-3 uppercase text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
+        <div class="sticky top-0 backdrop-blur-sm bg-slate/30 z-30">
+            <h4 class="flex items-center py-5 mb-3 uppercase text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
                 <span class="w-16 bg-slate-200 h-px mr-4"></span>
                 <span>formations</span>
             </h4>
@@ -19,8 +19,7 @@
                             <div class="mt-2 text-sm leading-normal whitespace-pre-wrap">{{ formation.description }}</div>
                         </div>
                     </div>
-                    <div
-                        class="bg-amber-400/10 px-3 py-2 rounded-full text-slate-100 self-start text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    <div class="bg-amber-400/10 px-3 py-2 rounded-full text-slate-100 self-start text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
                         {{ formation.year }}
                     </div>
                 </div>
