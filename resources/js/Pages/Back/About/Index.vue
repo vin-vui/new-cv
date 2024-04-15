@@ -57,6 +57,7 @@
                     </div>
                     <div class="flex flex-col justify-start">
                         <InputLabel value="Description" />
+                        <!-- TODO:: Markdown Textarea -->
                         <textarea v-model="form.description" rows="15" class="textarea-primary"></textarea>
                         <InputError :message="form.errors.description" />
                     </div>

@@ -1,6 +1,9 @@
 <template>
     <GuestLayout>
 
+        <!-- TODO:: Add digital ocean link referral -->
+        <!-- <a href="https://www.digitalocean.com/?refcode=e304e659efb0&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" /></a> -->
+
         <!-- Mobile button to show/hide the menu -->
         <div class="fixed top-4 right-4 z-40 shadow-sm lg:hidden">
             <button type="button" class="text-slate-200 lg:hidden" @click="sidebarOpen = true">
@@ -70,6 +73,7 @@
                     <Skills :skills="skills" />
                     <Projects :projects="projects" />
                     <Formations :formations="formations" />
+                    <Contact />
                 </div>
             </div>
         </div>
@@ -88,6 +92,7 @@ import Projects from '@/Pages/Front/Projects.vue';
 import Formations from '@/Pages/Front/Formations.vue';
 import Hero from '@/Pages/Front/Hero.vue';
 import Nav from '@/Pages/Front/Nav.vue';
+import Contact from '@/Pages/Front/Contact.vue';
 
 export default {
     components: {
@@ -98,6 +103,7 @@ export default {
         Formations,
         Hero,
         Nav,
+        Contact,
         Dialog,
         DialogPanel,
         TransitionChild,

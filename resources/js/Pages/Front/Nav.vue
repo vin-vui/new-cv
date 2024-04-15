@@ -3,7 +3,7 @@
         <div class="hidden md:flex">
             <Hero :about="about" />
         </div>
-        <nav class="flex flex-1 flex-col mt-16">
+        <nav class="flex flex-1 flex-col mt-12">
             <ul role="list" class="flex flex-1 flex-col gap-y-7">
                 <li>
                     <ul role="list" class="space-y-1">
@@ -72,6 +72,7 @@ export default {
             { name: 'compétences', href: '#skills' },
             { name: 'projets', href: '#projects' },
             { name: 'formations', href: '#formations' },
+            { name: 'contact', href: '#contact' },
         ]);
 
         const navigationWithCurrent = computed(() =>

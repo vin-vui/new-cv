@@ -8,7 +8,7 @@
         </div>
         <ol class="flex flex-col gap-y-4 md:group/list">
             <li v-for="formation in formations"
-                class="relative group p-4 rounded-md transition-all duration-200 motion-reduce:transition-none hover:bg-amber-400/10 hover:shadow-[inset_0_1px_0_0_rgba(252,211,77,0.1)] hover:drop-shadow-lg hover:!opacity-100 md:group-hover/list:opacity-50">
+                class="relative group p-4 rounded-md transition-all duration-200 motion-reduce:transition-none md:hover:bg-amber-400/10 md:hover:shadow-[inset_0_1px_0_0_rgba(252,211,77,0.1)] md:hover:drop-shadow-lg md:hover:!opacity-100 md:group-hover/list:opacity-50">
                 <div class="flex justify-between gap-4">
                     <div class="flex gap-4">
                         <div class="flex flex-col justify-between">

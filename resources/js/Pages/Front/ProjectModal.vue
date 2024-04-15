@@ -108,7 +108,7 @@
                                         </div>
                                     </div>
                                     <!-- skills -->
-                                    <div class="md:px-6 mt-8">
+                                    <div class="md:px-6 mt-8 mb-12">
                                         <div class="flex md:-ml-3 ml-3">
                                             <div class="bg-amber-400/10 px-3 py-2 rounded-full text-slate-100 text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
                                                 Stack Technique
