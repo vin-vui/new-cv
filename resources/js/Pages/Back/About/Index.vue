@@ -55,11 +55,13 @@
                         <input type="text" v-model="form.email" class="input-primary">
                         <InputError :message="form.errors.email" />
                     </div>
-                    <div class="flex flex-col justify-start">
-                        <InputLabel value="Description" />
-                        <!-- TODO:: Markdown Textarea -->
-                        <textarea v-model="form.description" rows="15" class="textarea-primary"></textarea>
-                        <InputError :message="form.errors.description" />
+                    <div class="flex gap-6">
+                        <div class="basis-1/2 flex flex-col justify-start">
+                            <InputLabel value="Description" />
+                            <textarea v-model="form.description" rows="15" class="textarea-primary"></textarea>
+                            <InputError :message="form.errors.description" />
+                        </div>
+                        <div class="basis-1/2 mt-6 prose prose-slate max-w-none" v-html="renderedMarkdown"></div>
                     </div>
 
                     <div class="mt-6 flex justify-end">
@@ -77,6 +79,7 @@
 </template>
 
 <script>
+import { marked } from 'marked';
 import AppLayout from '@/Layouts/AppLayout.vue'
 import InputLabel from '@/Components/InputLabel.vue'
 import InputError from '@/Components/InputError.vue'
@@ -119,6 +122,15 @@ export default {
         };
     },
 
+    computed: {
+        renderedMarkdown() {
+            if (this.form.description) {
+                return marked(this.form.description);
+            }
+            return '';
+        }
+    },
+
     methods: {
         submit() {
             if (this.$refs.photo) {
@@ -153,3 +165,14 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+/* Vous pouvez ajouter des styles spécifiques pour le rendu du Markdown */
+.prose img {
+    max-width: 100%;
+}
+.prose a {
+    color: #3b82f6;
+    text-decoration: underline;
+}
+</style>
