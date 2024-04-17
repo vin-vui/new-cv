@@ -18,10 +18,9 @@
                             class="relative rounded-3xl transform overflow-hidden bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl ">
 
                             <DialogTitle as="h3"
-                                class="py-4 text-xl text-center font-semibold leading-6 text-gray-800 bg-opacity-80"
-                                :class="{ 'bg-yellow-400': skill != null, 'bg-green-400': skill == null }">
-                                <span v-if="skill != null">Update Skill</span>
-                                <span v-else>Add Skill</span>
+                                :class="{ 'modal-title-update': skill != null, 'modal-title-create': skill == null }">
+                                <span v-if="skill != null">mise à jour d'une compétence</span>
+                                <span v-else>ajout d'une compétence</span>
                             </DialogTitle>
 
                             <div class="flex flex-col gap-4 p-4">
@@ -37,22 +36,22 @@
                                                     <img v-if="preview" :src="preview" class="object-contain h-32" />
                                                     <PhotoIcon v-else class="mx-auto size-12 text-gray-300"
                                                         aria-hidden="true" />
-                                                    <div class="mt-4 flex justify-center text-sm leading-6 text-gray-600">
+                                                    <div
+                                                        class="mt-4 flex justify-center text-sm leading-6 text-gray-600">
                                                         <label for="file-upload"
                                                             class="relative cursor-pointer px-2 rounded-3xl bg-white font-semibold text-green-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-green-600 focus-within:ring-offset-2 hover:text-green-500">
-                                                            <span>Upload a file</span>
-                                                            <input id="file-upload" type="file" accept="image/*" ref="photo"
-                                                                @change="previewImage" class="sr-only">
+                                                            <span>Téléverser une image</span>
+                                                            <input id="file-upload" type="file" accept="image/*" ref="photo" @change="previewImage" class="sr-only">
                                                         </label>
                                                     </div>
-                                                    <p class="mt-2 text-xs leading-5 text-gray-600">PNG, JPG, GIF, SVG up to 10MB</p>
+                                                    <p class="mt-2 text-xs leading-5 text-gray-600">PNG, JPG, GIF, SVG jusqu'à 10Mb</p>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="grow flex flex-col gap-4">
                                             <div class="flex flex-col justify-start">
-                                                <InputLabel value="Title" />
+                                                <InputLabel value="Titre" />
                                                 <input type="text" v-model="form.title" class="input-primary">
                                                 <InputError :message="form.errors.title" />
                                             </div>
@@ -63,7 +62,8 @@
                                             </div>
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Description" />
-                                                <textarea v-model="form.description" class="textarea-primary" rows="5"></textarea>
+                                                <textarea v-model="form.description" class="textarea-primary"
+                                                    rows="5"></textarea>
                                                 <InputError :message="form.errors.description" />
                                             </div>
                                             <div class="flex flex-col justify-start">
@@ -80,11 +80,9 @@
                                     </div>
 
                                     <div class="flex items-center justify-between gap-4 mt-4">
-                                        <button type="button"
-                                            class="btn-go-back"
-                                            @click="close">
+                                        <button type="button" class="btn-go-back" @click="close">
                                             <ArrowLeftIcon class="mr-1 h-5 w-5" aria-hidden="true" />
-                                            Go back
+                                            retour
                                         </button>
                                         <div v-if="skill != null" class="">
                                             <VueConfirmationButton
@@ -94,7 +92,7 @@
                                         </div>
                                         <button type="button" @click="submit" :loading="form.processing" :disabled="form.processing" class="btn-submit">
                                             <CheckIcon class="mr-1 size-5" aria-hidden="true" />
-                                            Submit
+                                            enregistrer
                                         </button>
                                     </div>
                                 </div>
@@ -154,9 +152,9 @@ export default {
             ]),
             preview: '',
             customMessages: [
-                'Delete Skill',
-                'Are you sure?',
-                'Done!'
+                'Supprimer la compétence',
+                'Êtes-vous sûr ?',
+                'Supprimée !'
             ],
         };
     },

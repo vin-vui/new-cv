@@ -18,22 +18,21 @@
                             class="relative rounded-3xl transform overflow-hidden bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl ">
 
                             <DialogTitle as="h3"
-                            class="py-4 text-xl text-center font-semibold leading-6 text-gray-800 bg-opacity-80"
-                                :class="{ 'bg-yellow-400': formation != null, 'bg-green-400': formation == null }">
-                                <span v-if="formation != null">Update Formation</span>
-                                <span v-else>Add Formation</span>
+                                :class="{ 'modal-title-update': formation != null, 'modal-title-create': formation == null }">
+                                <span v-if="formation != null">mise à jour d'une formation</span>
+                                <span v-else>ajout d'une formation</span>
                             </DialogTitle>
 
                             <div class="flex flex-col gap-4 p-4">
                                 <div class="flex flex-col w-full gap-4">
                                     <input type="hidden" v-model="form.id">
                                     <div class="flex flex-col justify-start">
-                                        <InputLabel value="Title" />
+                                        <InputLabel value="Titre" />
                                         <input type="text" v-model="form.title" class="input-primary">
                                         <InputError :message="form.errors.title" />
                                     </div>
                                     <div class="flex flex-col justify-start">
-                                        <InputLabel value="School" />
+                                        <InputLabel value="Organisme" />
                                         <input type="text" v-model="form.school" class="input-primary">
                                         <InputError :message="form.errors.school" />
                                     </div>
@@ -44,26 +43,26 @@
                                     </div>
                                     <div class="flex flex-col justify-start">
                                         <InputLabel value="Description" />
-                                        <textarea v-model="form.description" rows="10" class="textarea-primary"></textarea>
+                                        <textarea v-model="form.description" rows="10"
+                                            class="textarea-primary"></textarea>
                                         <InputError :message="form.errors.description" />
                                     </div>
 
                                     <div class="flex items-center justify-between gap-4 mt-4">
-                                        <button type="button"
-                                            class="btn-go-back"
-                                            @click="close">
+                                        <button type="button" class="btn-go-back" @click="close">
                                             <ArrowLeftIcon class="mr-1 h-5 w-5" aria-hidden="true" />
-                                            Go back
+                                            retour
                                         </button>
                                         <div v-if="formation != null">
-                                            <VueConfirmationButton class="text-red-600 hover:text-red-800 whitespace-nowrap transition-all duration-200"
+                                            <VueConfirmationButton
+                                                class="text-red-600 hover:text-red-800 whitespace-nowrap transition-all duration-200"
                                                 :messages="customMessages" v-on:confirmation-success="deleteFormation">
                                             </VueConfirmationButton>
                                         </div>
-                                        <button type="button" @click="submit" :loading="form.processing" :disabled="form.processing"
-                                            class="btn-submit">
+                                        <button type="button" @click="submit" :loading="form.processing"
+                                            :disabled="form.processing" class="btn-submit">
                                             <CheckIcon class="mr-1 h-5 w-5" aria-hidden="true" />
-                                            Submit
+                                            enregistrer
                                         </button>
                                     </div>
                                 </div>
@@ -114,9 +113,9 @@ export default {
                 description: '',
             }),
             customMessages: [
-                'Delete Formation',
-                'Are you sure?',
-                'Done!'
+                'Supprimer la formation',
+                'Êtes-vous sûr ?',
+                'Supprimée !'
             ],
         };
     },

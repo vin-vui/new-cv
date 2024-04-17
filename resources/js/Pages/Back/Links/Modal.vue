@@ -18,17 +18,16 @@
                             class="relative rounded-3xl transform overflow-hidden bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl ">
 
                             <DialogTitle as="h3"
-                            class="py-4 text-xl text-center font-semibold leading-6 text-gray-800 bg-opacity-80"
-                                :class="{ 'bg-yellow-400': link != null, 'bg-green-400': link == null }">
-                                <span v-if="link != null">Update Link</span>
-                                <span v-else>Add Link</span>
+                                :class="{ 'modal-title-update': link != null, 'modal-title-create': link == null }">
+                                <span v-if="link != null">mise à jour d'un lien</span>
+                                <span v-else>ajout d'un lien</span>
                             </DialogTitle>
 
                             <div class="flex flex-col gap-4 p-4">
                                 <div class="flex flex-col w-full gap-4">
                                     <input type="hidden" v-model="form.id">
                                     <div class="flex flex-col justify-start">
-                                        <InputLabel value="Title" />
+                                        <InputLabel value="Titre" />
                                         <input type="text" v-model="form.title" class="input-primary">
                                         <InputError :message="form.errors.title" />
                                     </div>
@@ -38,27 +37,25 @@
                                         <InputError :message="form.errors.url" />
                                     </div>
                                     <div class="flex flex-col justify-start">
-                                        <InputLabel value="SVG Icon" />
+                                        <InputLabel value="Icône en SVG" />
                                         <input type="text" v-model="form.img" class="input-primary">
                                         <InputError :message="form.errors.img" />
                                     </div>
 
                                     <div class="flex items-center justify-between gap-4 mt-4">
-                                        <button type="button"
-                                            class="btn-go-back"
-                                            @click="close">
+                                        <button type="button" class="btn-go-back" @click="close">
                                             <ArrowLeftIcon class="mr-1 h-5 w-5" aria-hidden="true" />
-                                            Go back
+                                            retour
                                         </button>
                                         <div v-if="link != null">
-                                            <VueConfirmationButton class="text-red-600 hover:text-red-800 whitespace-nowrap transition-all duration-200"
+                                            <VueConfirmationButton
+                                                class="text-red-600 hover:text-red-800 whitespace-nowrap transition-all duration-200"
                                                 :messages="customMessages" v-on:confirmation-success="deleteLink">
                                             </VueConfirmationButton>
                                         </div>
-                                        <button type="button" @click="submit" :loading="form.processing" :disabled="form.processing"
-                                            class="btn-submit">
-                                            <CheckIcon class="mr-1 h-5 w-5" aria-hidden="true" />
-                                            Submit
+                                        <button type="button" @click="submit" :loading="form.processing" :disabled="form.processing" class="btn-submit">
+                                            <CheckIcon class="mr-1 size-5" aria-hidden="true" />
+                                            enregistrer
                                         </button>
                                     </div>
                                 </div>
@@ -110,9 +107,9 @@ export default {
             }),
             preview: '',
             customMessages: [
-                'Delete Link',
-                'Are you sure?',
-                'Done!'
+                'Supprimer le lien',
+                'Êtes-vous sûr ?',
+                'Supprimé !'
             ],
         };
     },

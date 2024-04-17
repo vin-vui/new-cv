@@ -6,12 +6,12 @@
                 <form @submit.prevent="submit" enctype="multipart/form-data" class="flex flex-col w-full gap-4">
                     <input type="hidden" v-model="form.id">
                     <div class="flex flex-col justify-start">
-                        <InputLabel value="Title" />
+                        <InputLabel value="Nom" />
                         <input type="text" v-model="form.title" class="input-primary">
                         <InputError :message="form.errors.title" />
                     </div>
                     <div class="flex flex-col justify-start">
-                        <InputLabel value="Subtitle" />
+                        <InputLabel value="Fonction" />
                         <input type="text" v-model="form.subtitle" class="input-primary">
                         <InputError :message="form.errors.subtitle" />
                     </div>
@@ -21,32 +21,32 @@
                         <InputError :message="form.errors.catch_phrase" />
                     </div>
                     <div class="flex flex-col justify-start">
-                        <InputLabel value="Cover" />
-                        <div class="mt-2 flex justify-center rounded-3xl border-2 border-dashed border-gray-200 bg-white px-6 py-10">
+                        <InputLabel value="Image de couverture" />
+                        <div
+                            class="mt-2 flex justify-center rounded-3xl border-2 border-dashed border-gray-200 bg-white px-6 py-10">
                             <div class="text-center">
                                 <img v-if="preview" :src="preview" class="object-contain h-32 mt-4" />
                                 <PhotoIcon v-else class="mx-auto size-12 text-gray-300" aria-hidden="true" />
                                 <div class="mt-4 flex justify-center text-sm leading-6 text-gray-600">
                                     <label for="file-upload"
                                         class="relative cursor-pointer px-2 rounded-3xl bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                                        <span>Upload a file</span>
-                                        <input id="file-upload" type="file" accept="image/*" ref="photo" @change="previewImage" class="sr-only">
+                                        <span>Téléverser une image</span>
+                                        <input id="file-upload" type="file" accept="image/*" ref="photo"
+                                            @change="previewImage" class="sr-only">
                                     </label>
-                                    <p class="pl-1">or drag and drop</p>
                                 </div>
-                                <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                                <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF jusqu'à 10Mb</p>
                             </div>
                         </div>
-
                         <InputError :message="form.errors.img" />
                     </div>
                     <div class="flex flex-col justify-start">
-                        <InputLabel value="Address" />
+                        <InputLabel value="Adresse" />
                         <input type="text" v-model="form.address" class="input-primary">
                         <InputError :message="form.errors.address" />
                     </div>
                     <div class="flex flex-col justify-start">
-                        <InputLabel value="Phone" />
+                        <InputLabel value="Téléphone" />
                         <input type="text" v-model="form.phone" class="input-primary">
                         <InputError :message="form.errors.phone" />
                     </div>
@@ -65,10 +65,9 @@
                     </div>
 
                     <div class="mt-6 flex justify-end">
-                        <button :loading="form.processing" :disabled="form.processing"
-                            class="btn-submit">
+                        <button :loading="form.processing" :disabled="form.processing" class="btn-submit">
                             <CheckIcon class="mr-1 size-6" aria-hidden="true" />
-                            Submit
+                            enregistrer
                         </button>
                     </div>
                 </form>
@@ -171,6 +170,7 @@ export default {
 .prose img {
     max-width: 100%;
 }
+
 .prose a {
     color: #3b82f6;
     text-decoration: underline;

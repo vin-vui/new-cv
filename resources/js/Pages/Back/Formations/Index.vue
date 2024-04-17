@@ -9,7 +9,7 @@
 
         <button v-if="!isModalVisible" type="button" @click="showModal(null)" class="btn-add">
             <PlusCircleIcon class="size-6" aria-hidden="true" />
-            Add Formation
+            ajouter une formation
         </button>
 
         <FormationModal :formation="selectedFormation" :show="isModalVisible" @close="closeModal" />

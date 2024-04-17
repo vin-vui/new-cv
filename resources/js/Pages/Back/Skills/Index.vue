@@ -9,7 +9,7 @@
 
         <button v-if="!isModalVisible" type="button" @click="showModal(null)" class="btn-add">
             <PlusCircleIcon class="size-6" aria-hidden="true" />
-            Add Skill
+            ajouter une compétence
         </button>
 
         <SkillModal :skill="selectedSkill" :show="isModalVisible" @close="closeModal" />

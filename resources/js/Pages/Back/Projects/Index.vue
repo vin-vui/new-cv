@@ -9,7 +9,7 @@
 
         <button v-if="!isModalVisible" type="button" @click="showModal(null)" class="btn-add">
             <PlusCircleIcon class="size-6" aria-hidden="true" />
-            Add Project
+            ajouter un projet
         </button>
 
         <ProjectModal :project="selectedProject" :skills="skills" :show="isModalVisible" @close="closeModal" />

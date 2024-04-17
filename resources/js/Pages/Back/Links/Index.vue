@@ -9,7 +9,7 @@
 
         <button v-if="!isModalVisible" type="button" @click="showModal(null)" class="btn-add">
             <PlusCircleIcon class="size-6" aria-hidden="true" />
-            Add Link
+            ajouter un lien
         </button>
 
         <LinkModal :link="selectedLink" :show="isModalVisible" @close="closeModal" />
