@@ -13,13 +13,13 @@
 </template>
 
 <script setup>
-
 import { Head } from '@inertiajs/vue3';
+import { defineProps } from 'vue';
 
-defineProps({
-    title: String,
+const props = defineProps({
+    title: {
+        type: String,
+        default: 'Senior Fullstack Developer'
+    }
 });
-
-const title = 'Senior Fullstack Developer'
-
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <GuestLayout>
+    <GuestLayout :title="title">
 
         <!-- Mobile button to show/hide the menu -->
         <div class="fixed top-4 right-4 z-40 shadow-sm lg:hidden">
@@ -69,6 +69,7 @@
                     <Projects :projects="projects" />
                     <Formations :formations="formations" />
                     <Contact :email="user.email" />
+
                 </div>
             </div>
         </div>
@@ -116,8 +117,8 @@ export default {
         formations: Object,
     },
 
-    setup() {
-        const title = 'Senior Fullstack Developer';
+    setup(props) {
+        const title = `${props.about.title} - ${props.about.subtitle}`;
         const sidebarOpen = ref(false);
 
         return {
