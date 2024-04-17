@@ -1,7 +1,8 @@
 <template>
     <section id="formations" aria-labelledby="formations">
         <div class="sticky top-0 backdrop-blur-sm bg-slate/30 z-30">
-            <h4 class="flex items-center py-5 mb-3 uppercase text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
+            <h4
+                class="flex items-center py-5 mb-3 uppercase text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
                 <span class="w-16 bg-slate-200 h-px mr-4"></span>
                 <span>formations</span>
             </h4>
@@ -13,13 +14,17 @@
                     <div class="flex gap-4">
                         <div class="flex flex-col justify-between">
                             <h3 class="font-medium leading-snug text-slate-200">
-                                <div class="leading-tight text-slate-200 group-hover:text-amber-300 text-lg font-medium tracking-tight sm:text-xl">{{ formation.title }}</div>
+                                <div
+                                    class="leading-tight text-slate-200 group-hover:text-amber-400/80 text-lg font-medium tracking-tight sm:text-xl">
+                                    {{ formation.title }}</div>
                                 <div class="text-slate-500">{{ formation.school }}</div>
                             </h3>
-                            <div class="mt-2 text-sm leading-normal whitespace-pre-wrap">{{ formation.description }}</div>
+                            <div class="mt-2 text-sm leading-normal whitespace-pre-wrap">{{ formation.description }}
+                            </div>
                         </div>
                     </div>
-                    <div class="bg-amber-400/10 px-3 py-2 rounded-full text-slate-100 self-start text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    <div
+                        class="bg-amber-400/10 px-3 py-2 rounded-full text-slate-100 self-start text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
                         {{ formation.year }}
                     </div>
                 </div>

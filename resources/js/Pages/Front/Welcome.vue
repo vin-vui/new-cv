@@ -1,9 +1,6 @@
 <template>
     <GuestLayout>
 
-        <!-- TODO:: Add digital ocean link referral -->
-        <!-- <a href="https://www.digitalocean.com/?refcode=e304e659efb0&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" /></a> -->
-
         <!-- Mobile button to show/hide the menu -->
         <div class="fixed top-4 right-4 z-40 shadow-sm lg:hidden">
             <button type="button" class="text-slate-200 lg:hidden" @click="sidebarOpen = true">
@@ -61,19 +58,17 @@
                         <Hero :about="about" />
                     </div>
 
-                    <div class="-mt-8 bg-no-repeat bg-center h-96 bg-cover bg-local flex flex-col-reverse"
-                        :style="{ backgroundImage: 'url(' + about.img + ')' }">
-                        <div
-                            class="flex justify-center sm:py-16 pt-16 pb-8 px-8 bg-gradient-to-b from-transparent to-slate-900 select-none text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
+                    <div class="-mt-8 bg-no-repeat bg-center h-96 bg-cover bg-local flex flex-col-reverse" :style="{ backgroundImage: 'url(' + about.img + ')' }">
+                        <div class="flex justify-center sm:py-16 pt-16 pb-8 px-8 bg-gradient-to-b from-transparent to-slate-900 select-none text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
                             Bienvenue sur mon webfolio
                         </div>
                     </div>
 
-                    <About :about="about" :user="user" />
+                    <About :about="about" :profile_photo_url="user.profile_photo_url" />
                     <Skills :skills="skills" />
                     <Projects :projects="projects" />
                     <Formations :formations="formations" />
-                    <Contact />
+                    <Contact :email="user.email" />
                 </div>
             </div>
         </div>

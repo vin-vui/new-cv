@@ -23,7 +23,9 @@
                             <!-- main informations -->
                             <div class="">
                                 <div class="font-medium leading-snug text-slate-200">
-                                    <h3 class="leading-tight text-slate-200 group-hover:text-amber-300 text-lg font-medium tracking-tight sm:text-xl">{{ project.title }}</h3>
+                                    <h3
+                                        class="leading-tight text-slate-200 group-hover:text-amber-400/80 text-lg font-medium tracking-tight sm:text-xl">
+                                        {{ project.title }}</h3>
                                     <div>
                                         <span class="text-slate-500">{{ project.client }}</span>
                                         <span class="text-xs text-slate-600"> — Client</span>
@@ -36,10 +38,12 @@
                             </div>
                             <!-- dates -->
                             <div class="flex md:block mt-4 mb-2 -ml-2 md:my-0 md:-ml-20">
-                                <div v-if="project.end_date !== null" class="bg-amber-400/10 px-3 py-2 rounded-full text-slate-100 text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                                <div v-if="project.end_date !== null"
+                                    class="bg-amber-400/10 px-3 py-2 rounded-full text-slate-100 text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
                                     {{ formatDate(project.start_date) }} — {{ formatDate(project.end_date) }}
                                 </div>
-                                <div v-if="project.end_date === null" class="bg-amber-400/10 px-3 py-2 rounded-full text-slate-100 text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                                <div v-if="project.end_date === null"
+                                    class="bg-amber-400/10 px-3 py-2 rounded-full text-slate-100 text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
                                     {{ formatDate(project.start_date) }} — aujourd'hui
                                 </div>
                             </div>
@@ -61,9 +65,8 @@
                             <!-- external links -->
                             <div class="flex gap-2">
                                 <tippy v-if="project.github" content="GitHub du projet">
-                                    <a :href="project.github" target="_blank"
-                                        aria-label="Voir le projet sur GitHub" rel="noopener noreferrer"
-                                        class="text-slate-400 hover:text-slate-200">
+                                    <a :href="project.github" target="_blank" aria-label="Voir le projet sur GitHub"
+                                        rel="noopener noreferrer" class="text-slate-400 hover:text-slate-200">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8"
                                             aria-hidden="true" focusable="false">
                                             <path fill="currentColor"
@@ -82,7 +85,7 @@
                                 </tippy>
                             </div>
                             <!-- discover project -->
-                            <div class="group-hover:text-amber-300 flex items-center self-end whitespace-nowrap">
+                            <div class="group-hover:text-amber-400/80 flex items-center self-end whitespace-nowrap">
                                 <svg class="mr-4 size-5 group-hover:translate-x-2 transition-all duration-200"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="currentColor"

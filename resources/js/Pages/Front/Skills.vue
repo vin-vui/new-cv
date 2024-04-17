@@ -15,7 +15,7 @@
                         class="text-slate-400 hover:text-slate-200 flex flex-col items-center gap-3">
                         <div class="flex flex-col items-center gap-3">
                             <img :src="skill.img" :alt="skill.title + ' compétence'" class="size-12">
-                            <span class="font-semibold group-hover:text-amber-300">{{ skill.title }}</span>
+                            <span class="font-semibold group-hover:text-amber-400/80">{{ skill.title }}</span>
                         </div>
                     </a>
                 </li>
