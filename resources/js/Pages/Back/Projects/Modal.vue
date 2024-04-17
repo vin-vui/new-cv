@@ -15,7 +15,7 @@
                         leave-from="opacity-100 translate-y-0 sm:scale-100"
                         leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
                         <DialogPanel
-                            class="relative rounded-3xl transform overflow-hidden bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl ">
+                            class="relative rounded-3xl transform overflow-hidden bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-7xl ">
 
                             <DialogTitle as="h3"
                                 class="py-4 text-xl text-center font-semibold leading-6 text-gray-800 bg-opacity-80"
@@ -27,106 +27,94 @@
                             <div class="flex flex-col gap-4 p-4">
                                 <div class="flex flex-col w-full gap-4">
                                     <div class="flex gap-8">
+                                        <!-- Inputs -->
                                         <div class="flex flex-col gap-4 basis-2/5">
                                             <input type="hidden" v-model="form.id">
+                                            <!-- Title input -->
                                             <div class="flex flex-col justify-start">
-                                                <InputLabel value="Title" />
+                                                <InputLabel value="Projet" />
                                                 <input type="text" v-model="form.title" class="input-primary">
                                                 <InputError :message="form.errors.title" />
                                             </div>
-
-                                            <div class="flex flex-col justify-start">
-                                                <InputLabel value="Url Externe" />
-                                                <input type="url" v-model="form.url" class="input-primary">
-                                                <InputError :message="form.errors.url" />
-                                            </div>
-                                            <div class="flex flex-col justify-start">
-                                                <InputLabel value="Description" />
-                                                <textarea v-model="form.description" class="textarea-primary"></textarea>
-                                                <InputError :message="form.errors.description" />
-                                            </div>
+                                            <!-- Client input -->
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Client" />
                                                 <input type="text" v-model="form.client" class="input-primary">
                                                 <InputError :message="form.errors.client" />
                                             </div>
+                                            <!-- External URL input -->
+                                            <div class="flex flex-col justify-start">
+                                                <InputLabel value="Url externe du client" />
+                                                <input type="url" v-model="form.external_url" class="input-primary">
+                                                <InputError :message="form.errors.external_url" />
+                                            </div>
+                                            <!-- Project URL input -->
+                                            <div class="flex flex-col justify-start">
+                                                <InputLabel value="Url du projet" />
+                                                <input type="url" v-model="form.url" class="input-primary">
+                                                <InputError :message="form.errors.url" />
+                                            </div>
+                                            <!-- Job input -->
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Job" />
                                                 <input type="text" v-model="form.job" class="input-primary">
                                                 <InputError :message="form.errors.job" />
                                             </div>
+                                            <!-- Github link input -->
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Github" />
                                                 <input type="url" v-model="form.github" class="input-primary">
                                                 <InputError :message="form.errors.github" />
                                             </div>
+                                            <!-- Start Date input -->
                                             <div class="flex flex-col justify-start">
-                                                <InputLabel value="External URL" />
-                                                <input type="url" v-model="form.external_url" class="input-primary">
-                                                <InputError :message="form.errors.external_url" />
-                                            </div>
-                                            <div class="flex flex-col justify-start">
-                                                <InputLabel value="Start Date" />
+                                                <InputLabel value="Date de début" />
                                                 <input type="date" v-model="form.start_date" class="input-primary">
                                                 <InputError :message="form.errors.start_date" />
                                             </div>
+                                            <!-- End Date input -->
                                             <div class="flex flex-col justify-start">
-                                                <InputLabel value="End Date" />
+                                                <InputLabel value="Date de fin" />
                                                 <input type="date" v-model="form.end_date" class="input-primary">
                                                 <InputError :message="form.errors.end_date" />
                                             </div>
-
+                                            <!-- Description input -->
                                             <div class="flex flex-col justify-start">
-                                                <InputLabel value="Skills" />
-                                                <div class="flex gap-2 flex-wrap">
-                                                    <div v-for="skill in skills" class="flex items-center gap-1 bg-gray-100 py-0.5 px-2 rounded-full">
-                                                        <input type="checkbox" :id="skill.id" :value="skill.id" v-model="form.skills" class="rounded border-0 text-amber-500 focus:ring-amber-500">
-                                                        <label :for="skill.id" class="cursor-pointer">{{ skill.title }}</label>
-                                                    </div>
-                                                </div>
+                                                <InputLabel value="Description" />
+                                                <textarea v-model="form.description" rows="5" class="textarea-primary"></textarea>
+                                                <InputError :message="form.errors.description" />
                                             </div>
-
                                         </div>
-
                                         <!-- Illustrations -->
                                         <div class="grid grid-cols-2 gap-4">
                                             <div class="flex flex-col justify-start col-span-2">
-                                                <InputLabel value="Logo" />
-                                                <input type="file" accept="image/*" ref="photo"
-                                                    @change="previewLogo">
-                                                <img v-if="pwLogo" :src="pwLogo" class="object-contain h-32 mt-4 border" />
+                                                <InputLabel value="Illustration principale" />
+                                                <input type="file" accept="image/*" ref="photo" @change="previewLogo" class="input-file">
+                                                <img v-if="pwLogo" :src="pwLogo" class="img-file" />
                                                 <InputError :message="form.errors.logo" />
                                             </div>
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Image 1" />
-                                                <input type="file" accept="image/*" ref="image1"
-                                                    @change="previewImage1">
-                                                <img v-if="pwImage1" :src="pwImage1"
-                                                    class="object-contain h-32 mt-4 border" />
+                                                <input type="file" accept="image/*" ref="image1" @change="previewImage1" class="input-file">
+                                                <img v-if="pwImage1" :src="pwImage1" class="img-file" />
                                                 <InputError :message="form.errors.illustration_1" />
                                             </div>
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Image 2" />
-                                                <input type="file" accept="image/*" ref="image2"
-                                                    @change="previewImage2">
-                                                <img v-if="pwImage2" :src="pwImage2"
-                                                    class="object-contain h-32 mt-4 border" />
+                                                <input type="file" accept="image/*" ref="image2" @change="previewImage2" class="input-file">
+                                                <img v-if="pwImage2" :src="pwImage2" class="img-file" />
                                                 <InputError :message="form.errors.illustration_2" />
                                             </div>
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Image 3" />
-                                                <input type="file" accept="image/*" ref="image3"
-                                                    @change="previewImage3">
-                                                <img v-if="pwImage3" :src="pwImage3"
-                                                    class="object-contain h-32 mt-4 border" />
+                                                <input type="file" accept="image/*" ref="image3" @change="previewImage3" class="input-file">
+                                                <img v-if="pwImage3" :src="pwImage3" class="img-file" />
                                                 <InputError :message="form.errors.illustration_3" />
                                             </div>
                                             <div class="flex flex-col justify-start">
                                                 <InputLabel value="Image 4" />
-                                                <input type="file" accept="image/*" ref="image4"
-                                                    @change="previewImage4">
-                                                <img v-if="pwImage4" :src="pwImage4"
-                                                    class="object-contain h-32 mt-4 border" />
+                                                <input type="file" accept="image/*" ref="image4" @change="previewImage4" class="input-file">
+                                                <img v-if="pwImage4" :src="pwImage4" class="img-file" />
                                                 <InputError :message="form.errors.illustration_4" />
                                             </div>
 
@@ -137,6 +125,23 @@
                                         </div>
                                     </div>
 
+                                    <!-- Skills -->
+                                    <div class="flex flex-col justify-start">
+                                        <InputLabel value="Compétences" />
+                                        <div class="flex gap-2 flex-wrap border-2 rounded-3xl p-2">
+                                            <div v-for="skill in skills" class="flex items-center gap-2 bg-gray-100 py-0.5 px-2 rounded-full">
+                                                <input type="checkbox" :id="skill.id" :value="skill.id" v-model="form.skills" class="rounded border-0 text-amber-500 focus:ring-amber-500">
+                                                <label :for="skill.id" class="cursor-pointer">
+                                                    <div class="flex items-center gap-1">
+                                                        <img :src="skill.img" :alt="skill.title" class="h-4">
+                                                        <div class="group-hover:text-slate-300">{{ skill.title }}</div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Action Buttons -->
                                     <div class="flex items-center justify-between gap-4 mt-4">
                                         <button type="button"
                                             class="btn-go-back"
