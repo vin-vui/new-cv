@@ -7,10 +7,10 @@
                     <h3 class="text-xl">{{ link.title }}</h3>
                 </div>
                 <div class="">
-                    <a :href="link.url" target="_blank" class="underline text-green-400 text-sm flex items-center">
+                    <span class="underline text-green-400 text-sm flex items-center">
                         <ArrowTopRightOnSquareIcon class="inline-block h-4 w-4 mr-1" aria-hidden="true" />
                         {{ link.url }}
-                    </a>
+                    </span>
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@
     }
 
     .btn-add {
-        @apply fixed bottom-6 z-40 right-6 inline-flex items-center gap-x-2 rounded-full bg-indigo-600 px-5 py-4 text-lg uppercase tracking-widest font-semibold text-white hover:scale-105 hover:shadow-xl transition-all duration-200 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600;
+        @apply fixed bottom-6 z-40 right-6 inline-flex items-center gap-x-2 rounded-full bg-green-400 px-5 py-4 text-lg uppercase tracking-widest font-semibold text-slate-900 hover:scale-105 hover:shadow-xl transition-all duration-200 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600;
     }
 
     .link svg {

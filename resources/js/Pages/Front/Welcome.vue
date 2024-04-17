@@ -68,7 +68,7 @@
                     <Skills :skills="skills" />
                     <Projects :projects="projects" />
                     <Formations :formations="formations" />
-                    <Contact :email="user.email" />
+                    <Contact :email="user.email" :who="about.title" />
 
                 </div>
             </div>
