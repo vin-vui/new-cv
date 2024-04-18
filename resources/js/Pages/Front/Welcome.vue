@@ -68,7 +68,20 @@
                     <Skills :skills="skills" />
                     <Projects :projects="projects" />
                     <Formations :formations="formations" />
-                    <Contact :email="user.email" :who="about.title" />
+                    <Contact :email="user.email" :who="about.title" :phone="about.phone" />
+
+                    <div class="max-w-xl">
+                        <p>
+                            Design inspiré par la formidable <a href="https://brittanychiang.com" aria-label="Lien vers le webfolio de Brittany Chiang" target="_blank" class="whitespace-nowrap font-semibold hover:text-amber-400/80">Brittany Chiang</a>,
+                            codé avec 💛 sur <a href="https://code.visualstudio.com" aria-label="Lien vers les site de VSCode" target="_blank" class="whitespace-nowrap font-semibold hover:text-amber-400/80">Visual Studio Code</a>
+                            par <a href="https://vinvui.com" class="whitespace-nowrap font-semibold hover:text-amber-400/80">Vinvui</a>.
+                            Construit en utilisant <a href="https://laravel.com" aria-label="Lien vers le site de Laravel" target="_blank" class="whitespace-nowrap font-semibold hover:text-amber-400/80">Laravel</a>,
+                            <a href="https://v3.vuejs.org" aria-label="Lien vers le site de Vue.js" target="_blank" class="whitespace-nowrap font-semibold hover:text-amber-400/80">Vue.js</a>
+                            et <a href="https://tailwindcss.com" aria-label="Lien vers le site de Tailwind CSS" target="_blank" class="whitespace-nowrap font-semibold hover:text-amber-400/80">Tailwind CSS</a>.
+                            Déployé sur <a href="https://www.digitalocean.com/" class="whitespace-nowrap font-semibold hover:text-amber-400/80">DigitalOcean</a>
+                            avec <a href="https://forge.laravel.com" aria-label="Lien vers le site de Forge" target="_blank" class="whitespace-nowrap font-semibold hover:text-amber-400/80">Forge</a>.
+                        </p>
+                    </div>
 
                 </div>
             </div>
