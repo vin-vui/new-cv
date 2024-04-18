@@ -123,11 +123,10 @@
                                                 <InputError :message="form.errors.illustration_4" />
                                             </div>
 
-                                            <div
-                                                class="h-min self-end flex items-center gap-4 px-4 py-2 bg-cyan-500/50 text-gray-800 font-semibold rounded-full">
-                                                <input type="checkbox" id="checkbox" v-model="form.is_printable"
+                                            <div class="h-min self-end flex items-center gap-4 px-4 py-2 bg-cyan-500/50 text-gray-800 font-semibold rounded-full">
+                                                <input type="checkbox" id="is_printable" v-model="form.is_printable"
                                                     class="rounded border-0 text-amber-500 focus:ring-amber-500" />
-                                                <label for="checkbox">Printable</label>
+                                                <label for="is_printable">sur le CV papier</label>
                                             </div>
                                         </div>
                                     </div>
@@ -268,7 +267,7 @@ export default {
                 this.form.external_url = this.project?.external_url;
                 this.form.start_date = this.project?.start_date;
                 this.form.end_date = this.project?.end_date;
-                this.form.is_printable = this.project?.is_printable;
+                this.form.is_printable = Boolean(this.project?.is_printable);
                 this.form.skills = this.project?.skills.map(skill => skill.id);
             },
             deep: true

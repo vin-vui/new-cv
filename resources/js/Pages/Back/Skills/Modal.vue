@@ -67,7 +67,7 @@
                                                 <InputError :message="form.errors.description" />
                                             </div>
                                             <div class="flex flex-col justify-start">
-                                                <InputLabel value="Level" />
+                                                <InputLabel value="Niveau" />
                                                 <select v-model="form.level" class="input-primary">
                                                     <option v-for="option in options" :key="option.value"
                                                         :value="option.value">
