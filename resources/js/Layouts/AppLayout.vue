@@ -78,9 +78,9 @@
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-40 lg:flex lg:w-64 lg:flex-col ">
             <div class="flex grow flex-col gap-y-5 overflow-y-auto pt-4 overflow-x-hidden">
                 <a :href="route('profile.show')"
-                    class="flex items-center gap-2 mr-6 bg-gray-100 rounded-r-full focus:outline-none focus:border-gray-300 transition">
+                    class="flex items-center gap-2 mr-6 bg-white rounded-r-full focus:outline-none focus:border-gray-300 transition">
                     <img class="size-20 rounded-r-full object-cover" :src="$page.props.auth.user.profile_photo_url" :alt="$page.props.auth.user.name">
-                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-amber-500 text-xl font-semibold">{{ $page.props.auth.user.name }}'s CV</span>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-tr from-cyan-500 to-amber-500 text-xl font-semibold">{{ $page.props.auth.user.name }}'s CV</span>
                 </a>
                 <nav class="flex flex-1 flex-col pl-6">
                     <ul role="list" class="flex flex-1 flex-col gap-y-7">

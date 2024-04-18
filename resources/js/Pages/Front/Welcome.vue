@@ -70,8 +70,8 @@
                     <Formations :formations="formations" />
                     <Contact :email="user.email" :who="about.title" :phone="about.phone" />
 
-                    <div class="max-w-xl">
-                        <p>
+                    <div class="max-w-lg">
+                        <p class="text-sm">
                             Design inspiré par la formidable <a href="https://brittanychiang.com" aria-label="Lien vers le webfolio de Brittany Chiang" target="_blank" class="whitespace-nowrap font-semibold hover:text-amber-400/80">Brittany Chiang</a>,
                             codé avec 💛 sur <a href="https://code.visualstudio.com" aria-label="Lien vers les site de VSCode" target="_blank" class="whitespace-nowrap font-semibold hover:text-amber-400/80">Visual Studio Code</a>
                             par <a href="https://vinvui.com" class="whitespace-nowrap font-semibold hover:text-amber-400/80">Vinvui</a>.
