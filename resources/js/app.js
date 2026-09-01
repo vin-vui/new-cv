@@ -28,7 +28,13 @@ createInertiaApp({
 });
 
 document.addEventListener('mousemove', function (e) {
-    var light = document.querySelector('.light');
+    // Le halo n'est present que dans GuestLayout : les pages du back-office n'en ont pas.
+    const light = document.querySelector('.light');
+
+    if (! light) {
+        return;
+    }
+
     light.style.left = e.clientX + 'px';
     light.style.top = e.clientY + 'px';
 });
