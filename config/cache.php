@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('CACHE_DRIVER', 'file'),
+    'default' => env('CACHE_STORE', 'file'),
 
     /*
     |--------------------------------------------------------------------------
@@ -107,5 +107,19 @@ return [
     */
 
     'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache_'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cache Serializable Classes
+    |--------------------------------------------------------------------------
+    |
+    | This value controls which classes may be unserialized when reading from
+    | the cache. Leaving this as "false" prevents PHP object unserialization
+    | entirely, which hardens the application against "gadget chain" attacks
+    | if the APP_KEY is leaked. List classes explicitly to allow them.
+    |
+    */
+
+    'serializable_classes' => false,
 
 ];

@@ -28,7 +28,7 @@ class AboutController extends Controller
     {
         $validated_data = Validator::make($request->all(),[
             'title' => 'required',
-            'img' => [Rule::requiredIf($request->hasFile('img')), 'image', 'mimes:jpeg,jpg,png,gif,svg', 'max:2048'],
+            'img' => [Rule::requiredIf($request->hasFile('img')), 'image:allow_svg', 'mimes:jpeg,jpg,png,gif,svg', 'max:2048'],
             'subtitle' => 'nullable',
             'catch_phrase' => 'nullable',
             'description' => 'nullable',

@@ -38,7 +38,7 @@ class ProjectController extends Controller
             'title' => 'required',
             'client' => 'required',
             'job' => 'required',
-            'logo' => [Rule::requiredIf($request->hasFile('logo')), 'image', 'mimes:jpeg,jpg,png,gif,svg', 'max:2048'],
+            'logo' => [Rule::requiredIf($request->hasFile('logo')), 'image:allow_svg', 'mimes:jpeg,jpg,png,gif,svg', 'max:2048'],
             'url' => 'nullable',
             'github' => 'nullable',
             'external_url' => 'nullable',
