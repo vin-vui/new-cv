@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
@@ -24,7 +24,6 @@ class Project extends Model
         'illustration_2',
         'illustration_3',
         'illustration_4',
-        'status',
         'is_printable',
     ];
 

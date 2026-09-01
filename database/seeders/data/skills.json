@@ -1,0 +1,252 @@
+[
+    {
+        "id": 24,
+        "title": "Laravel",
+        "img": "/storage/image/UG3JvNDCo6OYlsHzBpxil6vFe32TMsKN7vWFLTEX.svg",
+        "url": "https://laravel.com",
+        "description": "Laravel is a web application framework with expressive, elegant syntax. We’ve already laid the foundation — freeing you to create without sweating the small things.",
+        "level": "expert",
+        "created_at": "2023-07-31 12:16:43",
+        "updated_at": "2024-03-26 10:09:45"
+    },
+    {
+        "id": 25,
+        "title": "Vue.js",
+        "img": "/storage/image/708zk9SClJCgq94NPwsrIBUYzAmUslkiltn2dkW7.svg",
+        "url": "https://vuejs.org",
+        "description": "An approachable, performant and versatile framework for building web user interfaces.",
+        "level": "advanced",
+        "created_at": "2023-07-31 12:30:02",
+        "updated_at": "2024-03-13 10:34:47"
+    },
+    {
+        "id": 33,
+        "title": "GitHub",
+        "img": "/storage/image/nWZwNaYRpirMHZwssIx8lbVFJDBfYzi9lg8nhAZu.svg",
+        "url": "https://github.com",
+        "description": "Whether you’re scaling your startup or just learning how to code, GitHub is your home. Join the world’s largest developer platform to build the innovations that empower humanity. Let’s build from here.",
+        "level": "expert",
+        "created_at": "2023-08-01 09:24:52",
+        "updated_at": "2024-03-13 10:44:10"
+    },
+    {
+        "id": 34,
+        "title": "PHP",
+        "img": "/storage/image/0HriGUQwdlkqFylnPCicDiHbazjxwPjlxq3MjTDV.svg",
+        "url": "https://www.php.net",
+        "description": "PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML.",
+        "level": "expert",
+        "created_at": "2023-08-01 09:26:13",
+        "updated_at": "2024-03-13 10:33:57"
+    },
+    {
+        "id": 35,
+        "title": "Inertia.js",
+        "img": "/storage/image/tPUvPPCs9baD7c50PdNE7cvz8NGpe3tyis4LK2ZO.svg",
+        "url": "https://inertiajs.com",
+        "description": "Inertia allows you to create fully client-side rendered, single-page apps, without the complexity that comes with modern SPAs. It does this by leveraging existing server-side patterns that you already love.",
+        "level": "intermediate",
+        "created_at": "2023-08-01 09:27:50",
+        "updated_at": "2024-03-13 10:32:47"
+    },
+    {
+        "id": 36,
+        "title": "Alpine.js",
+        "img": "/storage/image/uC2mQV9FtT0drzVen9KkFuGv5YOZ9gaLetbZFq9i.svg",
+        "url": "https://alpinejs.dev",
+        "description": "Alpine is a rugged, minimal tool for composing behavior directly in your markup. Think of it like jQuery for the modern web. Plop in a script tag and get going.",
+        "level": "advanced",
+        "created_at": "2023-08-01 09:29:31",
+        "updated_at": "2024-03-13 10:31:41"
+    },
+    {
+        "id": 37,
+        "title": "JavaScript",
+        "img": "/storage/image/U4YpAddvL8ngfxwP7kCMEYviaHwX9WMClD1WoZKN.svg",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+        "description": "JavaScript (JS) is a lightweight interpreted (or just-in-time compiled) programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as Node.js, Apache CouchDB and Adobe Acrobat.",
+        "level": "advanced",
+        "created_at": "2023-08-01 10:01:51",
+        "updated_at": "2024-03-13 10:32:55"
+    },
+    {
+        "id": 38,
+        "title": "HTML",
+        "img": "/storage/image/2U5Dtv3PnDKnkT55pbeyLu2naWJ1zO0tMe9ZfynF.svg",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+        "description": "HTML (HyperText Markup Language) is the most basic building block of the Web. It defines the meaning and structure of web content. Other technologies besides HTML are generally used to describe a web page's appearance/presentation (CSS) or functionality/behavior (JavaScript).",
+        "level": "expert",
+        "created_at": "2023-08-01 10:02:55",
+        "updated_at": "2024-03-13 10:32:40"
+    },
+    {
+        "id": 39,
+        "title": "CSS",
+        "img": "/storage/image/g4uNw4h5yO7Cm2BaWSJAk4ymQLElNY0RS3TbdzPy.svg",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+        "description": "Cascading Style Sheets (CSS) is a stylesheet language used to describe the presentation of a document written in HTML or XML (including XML dialects such as SVG, MathML or XHTML). CSS describes how elements should be rendered on screen, on paper, in speech, or on other media.",
+        "level": "advanced",
+        "created_at": "2023-08-01 10:03:54",
+        "updated_at": "2024-03-13 10:31:48"
+    },
+    {
+        "id": 40,
+        "title": "Tailwind",
+        "img": "/storage/image/qLfSrot0pHtXet767HLAjpDcBj1w1nMdFu3ApG6A.svg",
+        "url": "https://tailwindcss.com/",
+        "description": "Utility classes help you work within the constraints of a system instead of littering your stylesheets with arbitrary values. They make it easy to be consistent with color choices, spacing, typography, shadows, and everything else that makes up a well-engineered design system.",
+        "level": "expert",
+        "created_at": "2023-08-01 10:06:22",
+        "updated_at": "2024-03-13 10:34:31"
+    },
+    {
+        "id": 41,
+        "title": "Git",
+        "img": "/storage/image/kVx296fDiWUFgNG9lFYsjQpF4QsvgARFVxShKtCJ.svg",
+        "url": "https://git-scm.com",
+        "description": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
+        "level": "advanced",
+        "created_at": "2023-08-01 10:10:01",
+        "updated_at": "2024-03-13 10:32:21"
+    },
+    {
+        "id": 42,
+        "title": "PWA",
+        "img": "/storage/image/tnxlKV6aG5Z97dmHYUkh7PlXJkzwnN5EOxF31jkU.svg",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps",
+        "description": "A progressive web app (PWA) is an app that's built using web platform technologies, but that provides a user experience like that of a platform-specific app.",
+        "level": "expert",
+        "created_at": "2023-08-01 10:11:33",
+        "updated_at": "2024-03-13 10:34:10"
+    },
+    {
+        "id": 44,
+        "title": "Vite.js",
+        "img": "/storage/image/UJWlOgkdrgM9VJdz8rMJs5hPkC7CVrbXoR97cNv6.svg",
+        "url": "https://vitejs.dev",
+        "description": "Vite (French word for \"quick\", pronounced /vit/, like \"veet\") is a new breed of frontend build tooling that significantly improves the frontend development experience. It consists of two major parts:\r\nA dev server that serves your source files over native ES modules, with rich built-in features and astonishingly fast Hot Module Replacement (HMR).\r\nA build command that bundles your code with Rollup, pre-configured to output highly optimized static assets for production.",
+        "level": "advanced",
+        "created_at": "2023-08-01 10:28:00",
+        "updated_at": "2024-03-13 10:34:38"
+    },
+    {
+        "id": 45,
+        "title": "Node.js",
+        "img": "/storage/image/emNTbPhhMMTkmiB946f5m7ewVqMREQ3T4zWO2Jbp.svg",
+        "url": "https://nodejs.org/",
+        "description": "Node.js is a cross-platform, open-source server environment that can run on Windows, Linux, Unix, macOS, and more. Node.js is a back-end JavaScript runtime environment, runs on the V8 JavaScript Engine, and executes JavaScript code outside a web browser.",
+        "level": "advanced",
+        "created_at": "2023-08-01 10:29:57",
+        "updated_at": "2024-03-13 10:33:50"
+    },
+    {
+        "id": 46,
+        "title": "Livewire",
+        "img": "/storage/image/247ZFdKzbh9YgPWl17TH0rpsRuoAQ6ZyRYIWHC60.svg",
+        "url": "https://laravel-livewire.com/",
+        "description": "Livewire is a full-stack framework for Laravel that makes building dynamic interfaces simple, without leaving the comfort of Laravel.",
+        "level": "expert",
+        "created_at": "2023-08-01 10:32:45",
+        "updated_at": "2024-03-13 10:33:16"
+    },
+    {
+        "id": 47,
+        "title": "MySQL",
+        "img": "/storage/image/szmLypKLXtls3imm9KjebRQxp4u1F7YCaB3FdI1a.svg",
+        "url": "https://dev.mysql.com/",
+        "description": "MySQL is an open-source relational database management system (RDBMS). Its name is a combination of \"My\", the name of co-founder Michael Widenius's daughter My, and \"SQL\", the acronym for Structured Query Language.",
+        "level": "expert",
+        "created_at": "2023-08-01 10:36:46",
+        "updated_at": "2024-03-13 10:33:32"
+    },
+    {
+        "id": 48,
+        "title": "MariaDB",
+        "img": "/storage/image/aZnzEpPYmKQDs9ueVk6dZupLE8CtZzGA6lqRg4cZ.svg",
+        "url": "https://mariadb.org/",
+        "description": "MariaDB Server is one of the most popular open source relational databases. It’s made by the original developers of MySQL and guaranteed to stay open source. It is part of most cloud offerings and the default in most Linux distributions.",
+        "level": "expert",
+        "created_at": "2023-08-01 10:37:31",
+        "updated_at": "2024-03-13 10:33:23"
+    },
+    {
+        "id": 49,
+        "title": "PostgreSQL",
+        "img": "/storage/image/Goi7JxZyAUgGoRPa2xgNWltfiKE42LqQesYgdjFh.svg",
+        "url": "https://www.postgresql.org/",
+        "description": "PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.",
+        "level": "advanced",
+        "created_at": "2023-08-01 10:38:21",
+        "updated_at": "2024-03-13 10:34:03"
+    },
+    {
+        "id": 52,
+        "title": "Figma",
+        "img": "/storage/image/qJVGah4RB4x2nLZUMJGUTpdbpG4IaFv8Ttcnlc3O.svg",
+        "url": "https://www.figma.com",
+        "description": "Figma est un éditeur de graphiques vectoriels et un outil de prototypage. Il est principalement basé sur le web, avec des fonctionnalités hors ligne supplémentaires activées par des applications de bureau pour macOS et Windows.",
+        "level": "intermediate",
+        "created_at": "2024-02-27 06:37:49",
+        "updated_at": "2024-03-13 10:32:05"
+    },
+    {
+        "id": 54,
+        "title": "DigitalOcean",
+        "img": "/storage/image/Mrt82L1qXtY94zaP5x1Cli9tyHwtubWDL5Ehakbc.svg",
+        "url": "https://www.digitalocean.com/",
+        "description": "DigitalOcean is a cloud infrastructure provider offering cloud services to help businesses deploy, manage, and scale applications across multiple computers.",
+        "level": "advanced",
+        "created_at": "2024-02-27 11:28:35",
+        "updated_at": "2024-03-13 10:31:57"
+    },
+    {
+        "id": 55,
+        "title": "Netlify",
+        "img": "/storage/image/IYNMzsi7hMjVgVuSuFmpG2FAM4XuZXNnayxHliwd.svg",
+        "url": "https://www.netlify.com",
+        "description": "Netlify is a cloud computing company that offers hosting and serverless backend services for static websites and web applications.",
+        "level": "advanced",
+        "created_at": "2024-02-27 11:30:19",
+        "updated_at": "2024-03-13 10:33:39"
+    },
+    {
+        "id": 56,
+        "title": "Python",
+        "img": "/storage/image/2NuhybtDpRc0t8l8dYfdTXjz6AFYtXYMtN4BFl2b.svg",
+        "url": "https://www.python.org/",
+        "description": "Python is a programming language that lets you work quickly\r\nand integrate systems more effectively.",
+        "level": "advanced",
+        "created_at": "2024-03-07 11:40:19",
+        "updated_at": "2024-03-13 10:34:17"
+    },
+    {
+        "id": 57,
+        "title": "Selenium",
+        "img": "/storage/image/PWJ2s3WRjeqYIc91A820WBwQDJ4WR1MFQCKRrUBf.svg",
+        "url": "https://www.selenium.dev/",
+        "description": "Selenium automates browsers. That's it!",
+        "level": "advanced",
+        "created_at": "2024-03-07 11:41:40",
+        "updated_at": "2024-03-13 10:34:23"
+    },
+    {
+        "id": 58,
+        "title": "CI/CD",
+        "img": "/storage/image/21YJLzqmcp8q2vuKfqnF78rBJnHLMVkYsO53yeW5.png",
+        "url": "https://www.redhat.com/fr/topics/devops/what-is-ci-cd",
+        "description": "Le modèle CI/CD, qui désigne l'intégration et la distribution ou le déploiement continus, a pour objectif de rationaliser et d'accélérer le cycle de vie de développement des logiciels.",
+        "level": "intermediate",
+        "created_at": "2024-04-12 13:54:42",
+        "updated_at": "2024-04-17 09:19:33"
+    },
+    {
+        "id": 59,
+        "title": "Docker",
+        "img": "/storage/image/qmZVNSxd8zLkh1OZECinSVKcFAnQuFupNdm2mMNm.png",
+        "url": "https://www.docker.com",
+        "description": "Docker helps developers build, share, run, and verify applications anywhere — without tedious environment configuration or management.",
+        "level": "intermediate",
+        "created_at": "2025-02-03 12:03:21",
+        "updated_at": "2025-02-03 12:03:21"
+    }
+]

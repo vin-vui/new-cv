@@ -2,41 +2,49 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Recree l'etat de production : contenu du CV et fichiers associes.
      */
     public function run(): void
     {
-        $abouts_file_path = resource_path('sql/abouts.sql');
-        DB::unprepared(
-            file_get_contents($abouts_file_path)
-        );
-
-        $skills_file_path = resource_path('sql/skills.sql');
-        DB::unprepared(
-            file_get_contents($skills_file_path)
-        );
-
-        $formations_file_path = resource_path('sql/formations.sql');
-        DB::unprepared(
-            file_get_contents($formations_file_path)
-        );
-
-        $links_file_path = resource_path('sql/links.sql');
-        DB::unprepared(
-            file_get_contents($links_file_path)
-        );
-
-        User::factory()->create([
-            'name' => 'Vincent',
-            'email' => 'vincent@vinvui.com',
-            'password' => bcrypt('password'),
+        $this->call([
+            UserSeeder::class,
+            AboutSeeder::class,
+            SkillSeeder::class,
+            ProjectSeeder::class,
+            FormationSeeder::class,
+            LinkSeeder::class,
         ]);
+
+        $this->publishStorageFiles();
+    }
+
+    /**
+     * Copie les images du CV vers le disque public.
+     *
+     * Les enregistrements referencent des chemins /storage/image/..., qui ne
+     * resolvent que si ces fichiers sont presents et que storage:link a ete
+     * execute.
+     */
+    protected function publishStorageFiles(): void
+    {
+        $source = database_path('seeders/storage');
+
+        if (! File::isDirectory($source)) {
+            $this->command?->warn("Aucun fichier a publier : {$source} est absent.");
+
+            return;
+        }
+
+        File::copyDirectory($source, Storage::disk('public')->path(''));
+
+        $count = count(File::allFiles($source));
+        $this->command?->info("{$count} fichiers publies sur le disque public.");
     }
 }
